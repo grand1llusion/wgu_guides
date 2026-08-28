@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WGU Field Guide - Interactive Planner</title>
+    <style>
+        :root {
+            --wgu-blue: #002F51;
+            --wgu-light-blue: #007398;
+            --wgu-gold: #F1B434;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-dark: #333333;
+            --text-muted: #666666;
+            --border-radius: 8px;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            color: var(--wgu-blue);
+            margin-bottom: 10px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
+
+        .card h2 {
+            color: var(--wgu-light-blue);
+            border-bottom: 2px solid var(--wgu-gold);
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        select, input[type="range"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        /* Checkbox Grid */
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .checkbox-item {
+            background: var(--bg-color);
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #e0e0e0;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .checkbox-item input {
+            margin-right: 10px;
+            margin-top: 4px;
+        }
+
+        .checkbox-label {
+            font-size: 14px;
+        }
+
+        .cu-badge {
+            background: var(--wgu-blue);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 12px;
+            font-size: 12px;
+            margin-left: auto;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            background: #e0e0e0;
+            height: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+
+        .progress-bar {
+            background: var(--wgu-light-blue);
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .progress-bar.warning {
+            background: var(--wgu-gold);
+        }
+
+        .progress-bar.danger {
+            background: #d9534f;
+        }
+
+        /* Results Dashboard */
+        .dashboard-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .stat-box {
+            background: var(--bg-color);
+            padding: 15px;
+            border-radius: var(--border-radius);
+            border: 1px solid #e0e0e0;
+        }
+
+        .stat-box h3 {
+            margin: 0;
+            font-size: 28px;
+            color: var(--wgu-blue);
+        }
+
+        .stat-box p {
+            margin: 5px 0 0;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .warning-text {
+            color: #d9534f;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        /* Mentor Template */
+        textarea {
+            width: 100%;
+            height: 300px;
+            font-family: monospace;
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            resize: vertical;
+            background: #fdfdfd;
+        }
+
+        #gen-ed-section {
+            transition: opacity 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>The WGU Degree Blueprint</h1>
+        <p>Map your transfers, slide your timeline, and generate your mentor roadmap.</p>
+    </header>
+
+    <div class="card">
+        <h2>1. Select Your Program</h2>
+        <select id="program-select">
+            <option value="BSIT">B.S. Information Technology (BSIT) - 110 CUs</option>
+            <option value="BSCSIA">B.S. Cybersecurity & IA (BSCSIA) - 122 CUs</option>
+            <option value="MSCSIA">M.S. Cybersecurity & IA (MSCSIA) - 36 CUs</option>
+        </select>
+    </div>
+
+    <div class="card">
+        <h2>2. Mock Transfer Credit Evaluator</h2>
+        <p>Check the certs and external courses (Sophia/Study.com) you plan to transfer in. <strong>Remember: WGU does not accept transfer credit after you enroll.</strong></p>
+        
+        <div id="transfer-warnings" class="warning-text"></div>
+        
+        <div class="progress-container">
+            <div id="transfer-progress" class="progress-bar"></div>
+        </div>
+        <p style="text-align: right; font-size: 12px; margin-top: -10px;"><span id="transfer-percentage">0</span>% transferred (Cap: <span id="transfer-cap-display">75</span>%)</p>
+
+        <h3 style="margin-top: 20px; font-size: 16px; color: var(--wgu-blue);">Industry Certifications</h3>
+        <div class="checkbox-grid" id="cert-grid">
+            </div>
+
+        <div id="gen-ed-section">
+            <h3 style="margin-top: 20px; font-size: 16px; color: var(--wgu-blue);">Sophia / Study.com (Gen-Eds & Core)</h3>
+            <div class="checkbox-grid" id="gen-ed-grid">
+                </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>3. Pace & Timeline</h2>
+        <p>Drag the slider to set your target completion timeline. WGU terms are 6 months long.</p>
+        
+        <div style="margin: 20px 0;">
+            <label for="term-slider"><strong>Target Completion:</strong> <span id="term-display">2 Terms (12 Months)</span></label>
+            <input type="range" id="term-slider" min="1" max="10" value="2" step="1">
+        </div>
+
+        <div class="dashboard-stats">
+            <div class="stat-box">
+                <h3 id="stat-remaining-cu">110</h3>
+                <p>CUs Remaining</p>
+            </div>
+            <div class="stat-box">
+                <h3 id="stat-cu-per-term">55</h3>
+                <p>CUs required per Term</p>
+            </div>
+            <div class="stat-box">
+                <h3 id="stat-cost">$8,250</h3>
+                <p>Estimated WGU Tuition</p>
+            </div>
+        </div>
+        <p id="pace-feedback" style="text-align: center; font-weight: bold;"></p>
+    </div>
+
+    <div class="card">
+        <h2>4. Your Day-One Mentor Roadmap</h2>
+        <p>Copy and paste this into an email for your first Program Mentor call.</p>
+        <textarea id="mentor-template" readonly></textarea>
+    </div>
+</div>
+
+<script>
+    // --- DATA DICTIONARY ---
+    const programData = {
+        BSIT: {
+            name: "B.S. Information Technology",
+            totalCU: 110,
+            termCost: 4125,
+            transferCap: 0.75, // 75%
+            certs: [
+                { id: 'itil', name: 'ITIL 4 Foundation', cu: 4 },
+                { id: 'aplus', name: 'CompTIA A+ (Core 1 & 2)', cu: 8 },
+                { id: 'netplus', name: 'CompTIA Network+', cu: 4 },
+                { id: 'secplus', name: 'CompTIA Security+', cu: 4 },
+                { id: 'cloudplus', name: 'CompTIA Cloud+', cu: 3 },
+                { id: 'projectplus', name: 'CompTIA Project+', cu: 4 },
+                { id: 'linux', name: 'LPI Linux Essentials', cu: 3 },
+                { id: 'awscp', name: 'AWS Cloud Practitioner', cu: 3 }
+            ],
+            genEds: [
+                { id: 'comp', name: 'English Composition', cu: 3 },
+                { id: 'math', name: 'Applied Algebra', cu: 3 },
+                { id: 'stats', name: 'Probability & Statistics', cu: 3 },
+                { id: 'health', name: 'Health & Wellness', cu: 4 },
+                { id: 'science', name: 'Natural Science Lab', cu: 2 },
+                { id: 'intro-it', name: 'Intro to IT', cu: 3 },
+                { id: 'db', name: 'Data Management - Foundations', cu: 3 },
+                { id: 'web', name: 'Web Design Fundamentals', cu: 3 }
+            ]
+        },
+        BSCSIA: {
+            name: "B.S. Cybersecurity & IA",
+            totalCU: 122,
+            termCost: 4625,
+            transferCap: 0.75, // 75%
+            certs: [
+                { id: 'itil', name: 'ITIL 4 Foundation', cu: 4 },
+                { id: 'aplus', name: 'CompTIA A+ (Core 1 & 2)', cu: 8 },
+                { id: 'netplus', name: 'CompTIA Network+', cu: 4 },
+                { id: 'secplus', name: 'CompTIA Security+', cu: 4 },
+                { id: 'cysa', name: 'CompTIA CySA+', cu: 4 },
+                { id: 'pentest', name: 'CompTIA PenTest+', cu: 4 },
+                { id: 'projectplus', name: 'CompTIA Project+', cu: 4 },
+                { id: 'dataplus', name: 'CompTIA Data+', cu: 4 },
+                { id: 'linux', name: 'LPI Linux Essentials', cu: 3 },
+                { id: 'sscp', name: 'ISC2 SSCP', cu: 4 },
+                { id: 'ccsp', name: 'ISC2 CCSP', cu: 4 }
+            ],
+            genEds: [
+                { id: 'comp', name: 'English Composition', cu: 3 },
+                { id: 'math', name: 'Applied Algebra', cu: 3 },
+                { id: 'stats', name: 'Probability & Statistics', cu: 3 },
+                { id: 'health', name: 'Health & Wellness', cu: 4 },
+                { id: 'science', name: 'Natural Science Lab', cu: 2 },
+                { id: 'intro-it', name: 'Intro to IT', cu: 3 },
+                { id: 'python', name: 'Foundations of Python', cu: 3 },
+                { id: 'db', name: 'Data Management - Foundations', cu: 3 }
+            ]
+        },
+        MSCSIA: {
+            name: "M.S. Cybersecurity & IA",
+            totalCU: 36,
+            termCost: 5125,
+            transferCap: 0.50, // 50%
+            certs: [
+                { id: 'cysa_ms', name: 'CompTIA CySA+', cu: 4 },
+                { id: 'pentest_ms', name: 'CompTIA PenTest+', cu: 4 },
+                { id: 'cism', name: 'ISACA CISM', cu: 4 }
+            ],
+            genEds: [] // Grad degrees do not accept lower-division Sophia/Study.com transfers
+        }
+    };
+
+    // --- DOM ELEMENTS ---
+    const selectProgram = document.getElementById('program-select');
+    const certGrid = document.getElementById('cert-grid');
+    const genEdGrid = document.getElementById('gen-ed-grid');
+    const genEdSection = document.getElementById('gen-ed-section');
+    const transferProgress = document.getElementById('transfer-progress');
+    const transferPercentage = document.getElementById('transfer-percentage');
+    const transferCapDisplay = document.getElementById('transfer-cap-display');
+    const transferWarnings = document.getElementById('transfer-warnings');
+    const termSlider = document.getElementById('term-slider');
+    const termDisplay = document.getElementById('term-display');
+    
+    // Stats
+    const statRemainingCu = document.getElementById('stat-remaining-cu');
+    const statCuPerTerm = document.getElementById('stat-cu-per-term');
+    const statCost = document.getElementById('stat-cost');
+    const paceFeedback = document.getElementById('pace-feedback');
+    const mentorTemplate = document.getElementById('mentor-template');
+
+    // --- STATE ---
+    let currentProgram = 'BSIT';
+    let transferredCUs = 0;
+
+    // --- INIT ---
+    function init() {
+        populateCheckboxes();
+        calculateEverything();
+    }
+
+    // --- CORE LOGIC ---
+    function populateCheckboxes() {
+        currentProgram = selectProgram.value;
+        const data = programData[currentProgram];
+        
+        certGrid.innerHTML = '';
+        genEdGrid.innerHTML = '';
+        transferredCUs = 0;
+
+        // Render Certs
+        data.certs.forEach(item => {
+            certGrid.innerHTML += createCheckboxHTML(item);
+        });
+
+        // Render Gen Eds (Hide section if MSCSIA)
+        if (data.genEds.length > 0) {
+            genEdSection.style.display = 'block';
+            data.genEds.forEach(item => {
+                genEdGrid.innerHTML += createCheckboxHTML(item);
+            });
+        } else {
+            genEdSection.style.display = 'none';
+        }
+
+        // Setup event listeners for new checkboxes
+        document.querySelectorAll('.transfer-cb').forEach(cb => {
+            cb.addEventListener('change', calculateEverything);
+        });
+
+        transferCapDisplay.innerText = (data.transferCap * 100);
+    }
+
+    function createCheckboxHTML(item) {
+        return `
+            <label class="checkbox-item">
+                <input type="checkbox" class="transfer-cb" data-cu="${item.cu}" data-name="${item.name}">
+                <div class="checkbox-label">
+                    ${item.name}
+                </div>
+                <span class="cu-badge">${item.cu} CU</span>
+            </label>
+        `;
+    }
+
+    function calculateEverything() {
+        const data = programData[currentProgram];
+        
+        // 1. Calculate Transfers
+        transferredCUs = 0;
+        let transferredNames = [];
+        document.querySelectorAll('.transfer-cb:checked').forEach(cb => {
+            transferredCUs += parseInt(cb.getAttribute('data-cu'));
+            transferredNames.push(cb.getAttribute('data-name'));
+        });
+
+        const maxTransferCU = Math.floor(data.totalCU * data.transferCap);
+        let validTransferCUs = transferredCUs;
+        
+        transferWarnings.innerText = '';
+        if (transferredCUs > maxTransferCU) {
+            validTransferCUs = maxTransferCU;
+            transferWarnings.innerText = `⚠️ You have exceeded the maximum allowable transfer limit (${maxTransferCU} CUs). Some credits will not apply.`;
+        }
+
+        const percentage = ((validTransferCUs / data.totalCU) * 100).toFixed(1);
+        transferPercentage.innerText = percentage;
+        transferProgress.style.width = `${percentage}%`;
+        
+        // Color coding progress bar
+        if (percentage >= (data.transferCap * 100)) {
+            transferProgress.className = 'progress-bar danger';
+        } else if (percentage > 50) {
+            transferProgress.className = 'progress-bar warning';
+        } else {
+            transferProgress.className = 'progress-bar';
+        }
+
+        // 2. Timeline & Costs
+        const remainingCUs = data.totalCU - validTransferCUs;
+        statRemainingCu.innerText = remainingCUs;
+
+        const terms = parseInt(termSlider.value);
+        termDisplay.innerText = `${terms} Term${terms > 1 ? 's' : ''} (${terms * 6} Months)`;
+
+        const cuPerTerm = Math.ceil(remainingCUs / terms);
+        statCuPerTerm.innerText = cuPerTerm;
+        
+        // Format cost with commas
+        statCost.innerText = "$" + (terms * data.termCost).toLocaleString();
+
+        // 3. Pacing Feedback
+        if (currentProgram !== 'MSCSIA') {
+            if (cuPerTerm < 12) paceFeedback.innerHTML = `<span style="color:var(--wgu-light-blue)">Pace: Part-time (Requires WGU minimum waiver). Focus on passing 12 CUs.</span>`;
+            else if (cuPerTerm <= 15) paceFeedback.innerHTML = `<span style="color:green">Pace: Standard Full-Time. Highly realistic for working adults (~10-15 hrs/wk).</span>`;
+            else if (cuPerTerm <= 25) paceFeedback.innerHTML = `<span style="color:var(--wgu-gold)">Pace: Accelerated. Requires dedication and consistency (~20-25 hrs/wk).</span>`;
+            else paceFeedback.innerHTML = `<span style="color:#d9534f">Pace: Hyper-Accelerated. High burnout risk. Requires deep prior IT experience or full-time study (~30-40+ hrs/wk).</span>`;
+        } else {
+            // Master's logic (8 CU = full time)
+            if (cuPerTerm <= 8) paceFeedback.innerHTML = `<span style="color:green">Pace: Standard Full-Time Graduate. Realistic for working adults.</span>`;
+            else if (cuPerTerm <= 15) paceFeedback.innerHTML = `<span style="color:var(--wgu-gold)">Pace: Accelerated Graduate. Demands heavy commitment.</span>`;
+            else paceFeedback.innerHTML = `<span style="color:#d9534f">Pace: Hyper-Accelerated. Path requires pre-reading D487 and strong infosec fundamentals.</span>`;
+        }
+
+        // 4. Update Mentor Template
+        updateMentorTemplate(data.name, remainingCUs, validTransferCUs, terms, cuPerTerm, transferredNames);
+    }
+
+    function updateMentorTemplate(progName, remainingCUs, validTransferCUs, terms, cuPerTerm, transferredNames) {
+        let certString = transferredNames.length > 0 ? transferredNames.join(', ') : 'None';
+        
+        const template = `WGU ${progName} — Student Roadmap
+Name: [Your Name]                          Student ID: [Your ID]
+Program start date: [Date]                 Target graduation: ${terms * 6} months
+Program Mentor: [Mentor Name]
+
+────────────────────────────────────────────────
+1. MY SITUATION
+────────────────────────────────────────────────
+Hours/week I can realistically commit: [X] hrs
+Work schedule / constraints: [Insert schedule]
+Prior IT experience: [Insert background]
+Transfers: ${validTransferCUs} CUs cleared prior to start.
+Items transferred: ${certString}
+Courses remaining: ${remainingCUs} CUs
+
+────────────────────────────────────────────────
+2. MY TARGET PACE
+────────────────────────────────────────────────
+Target pace: ${terms} Term(s)
+CUs I intend to complete this term: ${cuPerTerm} CUs
+(WGU minimum full-time is ${progName.includes('M.S.') ? '8' : '12'} CU/term)
+
+Courses I want opened THIS TERM, in order:
+  1. [Course Name]  target complete: [Date]
+  2. [Course Name]  target complete: [Date]
+  3. [Course Name]  target complete: [Date]
+
+────────────────────────────────────────────────
+3. WHAT I'M ASKING YOU FOR
+────────────────────────────────────────────────
+[ ] Open my next course as soon as I pass the current one — I understand added courses cost nothing extra.
+[ ] Hold me accountable: if I miss two weekly targets in a row, tell me directly.
+[ ] Flag any course where my catalog version differs from what I read online.
+`;
+        mentorTemplate.value = template;
+    }
+
+    // --- EVENT LISTENERS ---
+    selectProgram.addEventListener('change', init);
+    termSlider.addEventListener('input', calculateEverything);
+
+    // Run on load
+    init();
+
+</script>
+</body>
+</html>

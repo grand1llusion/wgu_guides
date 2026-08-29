@@ -343,59 +343,6 @@ Skip this if you're a WGU alum; read it twice if you're new.
 
 ---
 
-## 7. Course-by-Course Playbook
-
-Time estimates are community reports from experienced practitioners — scale up if you're newer. D-series advice carries over to the new catalog; the E-series courses are too new to have community coverage yet.
-
-### E123 — Cybersecurity Fundamentals (2 CU) 🆕
-Replaces D481. Reported to be a PA-based fundamentals course with **no embedded cert** ([new-program thread](https://old.reddit.com/r/WGUCyberSecurity/comments/1ve6htt/new_mscsia_program/)). No community writeups yet. If D481 history is a guide, expect the fastest course in the program: its OA took experienced folks 1–3 days ([old D481 breakdown](https://meetcyber.net/wgu-security-foundations-d481-cad4ed33a663) — IA principles, network security ops, infrastructure; classic trip-ups were IDS vs IPS, access-control models, Zero Trust vs defense-in-depth, OSI/ports).
-
-### D482 — Secure Network Design (3 CU, PA)
-**The task:** a network design proposal for **two merging companies on a $50,000 budget** — topology diagram (Visio), secure design principles, compliance mapping, cost-benefit analysis. ~9 sections, typical papers 10–12 pages.
-**Time:** 3 days–2 weeks. Even the 21-day speedrunner called it her second-biggest time sink.
-**How to win:** watch the cohort videos and use the course FAQ; analyze both companies' assets, replace what's weak, price components via Google; **free Visio comes with your [Azure for Students](https://azure.microsoft.com/en-us/free/students/) dev tools** (Section 10). Pitfalls from the [detailed writeup](https://mycyberjourney.weebly.com/the-journey/d482-secure-network-design): in the design-principles section use only principles the course material blesses ("Availability" got bounced); the threat section's scope is ambiguous (cover merger + topology risks); make the cost-benefit **qualitative**. Don't overthink — "follow the rubric and boom, you'll pass" ([success-tips thread](https://old.reddit.com/r/WGUCyberSecurity/comments/1p1vtow/d482_success_tips/)). Ask your instructor to pre-review before submitting.
-
-### D487 — Secure Software Design (3 CU, OA)
-**The exam:** ~68 questions / 2 hours. SDLC, Microsoft SDL, **OWASP SAMM, BSIMM**, Waterfall vs Agile, SCRUM.
-**Time:** 1–3 days with prep; **the** course to pre-study before your start date. The 33-day finisher identified the textbook beforehand, read it cover to cover, and passed PA + OA on day one ([thread](https://old.reddit.com/r/WGUCyberSecurity/comments/1up7gaf/completed_masters_program_in_33_days/)).
-**How to win:** the "D487 Review Questions" file in the course + pre-assessment mirror the OA well. Biggest pitfall: WGU words maturity-model phases non-standardly — memorize *their* phrasing ([writeup](https://mycyberjourney.weebly.com/the-journey/d487-secure-software-design)).
-
-### D483 — Security Operations / CySA+ (4 CU, cert exam)
-**Pass the CompTIA CySA+ (CS0-003) and you pass the course.** Voucher covers two attempts. **This and D484 are the program's bottlenecks** — huge time sinks without a solid cyber base; the two courses most worth transferring in.
-**How to win:** the community stack is **Sybex CySA+ Study Guide (Chapple/Seidl) + [Jason Dion](https://www.diontraining.com/) practice exams + [PocketPrep](https://www.pocketprep.com/)**, not CertMaster. Heads-up: WGU gates the voucher behind **90% on the CertMaster final assessment AND a separate practice test**, and students find those questions misleading — budget time to grind them ([rant thread with workarounds](https://old.reddit.com/r/WGUCyberSecurity/comments/1sragr2/cysa_am_i_dumb_or_are_the_certmaster_practice/)). The 33-day finisher prepped 23 days pre-enrollment and scored 787. Sequencing tip: **do CySA+ → straight into PenTest+** — the material overlaps.
-
-### D485 — Cloud Security (4 CU, PA + Azure lab)
-**The task:** written sections (service model, regulations, RBAC/least-privilege recommendations, Key Vault best practices, encryption at rest/in transit, backup, shared responsibility, 3 threats + mitigations) plus a **hands-on Azure lab with screenshots**.
-**Time:** 2–5 days with cloud experience; 1–2 weeks without.
-**How to win:** ([writeup](https://mycyberjourney.weebly.com/the-journey/d485-cloud-security), [success tips](https://old.reddit.com/r/WGUCyberSecurity/comments/1pjbdbj/d485_success_tips/)) **Write the paper sections (A, B, F, G) before ever entering the lab.** The lab is the most complained-about experience in the program: leftover artifacts from prior students, a 25,000-entry group picker, 5-minute waits per action, and a **4-hour session limit**. Do the practice labs and [Microsoft Learn](https://learn.microsoft.com/) Azure walkthroughs first; use the course's "Task Guide" and five-day pacing guide; screenshot everything uncropped as you go. Answer the literal wording of each prompt.
-
-### D484 — Penetration Testing / PenTest+ (4 CU, cert exam + PA task)
-**Pass PenTest+ and the short report-analysis PA.** The other program bottleneck; multiple grads called it their single biggest hurdle ([Excellence Award grad](https://old.reddit.com/r/WGUCyberSecurity/comments/1rykxx9/finally_graduated_and_i_got_an_excellence_award/)).
-**Time:** 2.5–6 weeks for non-pentesters; the 33-day finisher prepped 45 days pre-enrollment (790).
-**How to win:** **Sybex PenTest+ (Chapple) + [Jason Dion](https://www.diontraining.com/) exams + [PocketPrep](https://www.pocketprep.com/) + Hank Hackerson's YouTube series**; **[TryHackMe](https://tryhackme.com/) for hands-on context** ([20% student discount](https://tryhackme.com/students)). Know your nmap flags and the pentest process/report phases cold — that's what the PBQs hit. If scripting is weak, drill the script-analysis question types specifically. Ride the CySA+ momentum straight into this one.
-
-### D488 — Cybersecurity Architecture & Engineering (4 CU, OA; optional SecurityX voucher)
-**The OA is a WGU exam, not the SecurityX exam** — you can pass the course and bank the voucher for later (valid ~1 year; several grads sat SecurityX after graduating, like the [July 2026 finisher](https://old.reddit.com/r/WGUCyberSecurity/comments/1v8hr0c/i_dont_have_anything_left_to_do/) who then chained SecurityX → CISSP in a month).
-**Time:** 1–4 days with CySA+/PenTest+ fresh.
-**How to win:** PA first, target gaps; the OA runs harder than the practice test. **Cryptography is the differentiator**: know ECDSA/RSA/DSA/DH and cipher modes (ECB/CBC/CFB/OFB/CTR) at an operational level, plus risk frameworks. Community consensus: skip CertMaster; use a CASP+/SecurityX study guide — the 33-day finisher studied only the cryptography chapter of Mark Birch's CAS-004 guide ([writeup](https://mycyberjourney.weebly.com/the-journey/d488-cybersecurity-architecture-and-engineering)).
-
-### E122 — Human-Centric Risk in Cybersecurity (3 CU) 🆕
-Brand new; no community intel yet. Name suggests security awareness/behavioral risk territory. Check the course announcements and cohorts, and post the first writeup.
-
-### D489 — Cybersecurity Management (4 CU, PA; optional CISM voucher)
-**The task (recent catalog):** a long multi-section paper — gap analysis, mitigations mapped to **PCI DSS + GDPR**, GRC roles via the **NICE Framework**, physical/logical vulnerabilities, an awareness-training program per **NIST SP 800-50r1**, an IR plan per **SP 800-61**, and a **BCP** ([writeup](https://mycyberjourney.weebly.com/the-journey/d489-cybersecurity-management), [success tips](https://old.reddit.com/r/WGUCyberSecurity/comments/1pehxvb/d489_success_tips/) — 16 pages, 2 days).
-**How to win:** the NIST pubs and NICE spreadsheet are required reading anyway — write straight from them. Three policies in one consistent format beats three bespoke essays. Grads consistently rate this the most job-relevant course.
-**CISM:** the most respected cert in the bundle. Prep = **ISACA Official Review Manual + QAE question database + Prabh Nair's YouTube series** (33-day finisher: 65 days of prep, 696 scaled). If you already hold CISM, this whole course transfers. **Tip: [ISACA student membership is $25/year and gives 30% off exam registration](https://www.isaca.org/membership/student-hub)** — worth setting up before you sit anything ISACA.
-
-### E121 — GRC in the Age of AI (2 CU; optional AAISM voucher) 🆕
-Replaces D486. Aligned to ISACA's **AAISM** (Advanced in AI Security Management). Two catches the community already flagged: the program-guide PDF misprints its alignment, and **AAISM is only awarded to active CISM or CISSP holders** ([ISACA](https://www.isaca.org/credentialing/aaism)) — sequence D489/CISM first if you want the credential to actually issue. Old-D486 wisdom that likely transfers: write to the rubric from NIST SP 800-53 and the PCI DSS quick-reference; the cohort deck historically contained answer guidance; 4 hours to a passing paper was common ([D486 tips](https://old.reddit.com/r/WGUCyberSecurity/comments/1pa4cfu/d486_success_tips/)).
-
-### D490 — Cybersecurity Graduate Capstone (4 CU, 3 tasks)
-The longest course for almost everyone — 3 days for the fastest, 18 days for the 33-day finisher, weeks of frustration for the unlucky.
-
-- **Task 1 — Topic approval.** Needs instructor sign-off and can't fully clear until your other courses are done. **The topic must be a technological solution to a security problem** — pure policy/playbook topics get redirected ([struggling-to-start thread](https://old.reddit.com/r/WGUCyberSecurity/comments/1q9fbsh/mscsiacapstone_struggling_to_start/)). Fictional companies are allowed — *name* the company. Winning pattern: one narrow problem, one implementable technical fix (IAM program build, SIEM deployment, phishing-defense program, AD privilege whitelisting). Mirror the template. **Call the instructor before you write anything.**
-- **Task 2 — Proposal/implementation plan** (~15 pages typical). Watch the tense: evaluators have bounced papers over proposal-vs-report framing confusion ([venting thread](https://old.reddit.com/r/WGUCyberSecurity/comments/1n1wo2e/mscsia_capstone_venting/) and [part 2](https://old.reddit.com/r/WGUCyberSecurity/comments/1n5yj0o/more_mscsia_capstone_venting_starting_to_take_it/)) — clarify with your instructor which voice your version wants.
-- **Task 3 — Post-implementation report** (~10 pages). **Read Task 3 before writing Task 2** so they dovetail.
 
 Master's capstone evaluators are the strictest in the program (one student got 30 revision items on a single attempt). Browse the **[Model Capstone Archive](https://westerngovernorsuniversity.sharepoint.com/sites/capstonearchives/excellence/Pages/Home.aspx)** (via [WGU's blog](https://www.wgu.edu/blog/new-way-access-capstone-work-previous-grads1712.html)) for real passing examples before you pick a topic.
 

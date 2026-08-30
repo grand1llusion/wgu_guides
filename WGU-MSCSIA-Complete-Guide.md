@@ -58,8 +58,8 @@
 5. **Take the pre-assessment on day one of every OA course, before studying.** Study only what you missed. Community-reported time savings: ~50%.
 6. **Bring a written roadmap to your first mentor call.** [Section 5](#5-your-day-one-mentor-roadmap-copy-paste) has a copy-paste template. Mentors open courses one at a time; extra courses in a term cost **$0**.
 7. **Don't rely on CertMaster for the CompTIA courses.** Community standard is Sybex (Chapple) + Jason Dion/PocketPrep. CertMaster's voucher gate (90% on the final assessment *and* a practice test) is widely disliked — plan for it.
-8. **For the capstone: one security problem, one technical solution.** Policy-only topics get bounced. Talk to the course instructor *before* submitting Task 1, and read Task 3's requirements before writing Task 2.
-9. **Screenshot everything in the D485 Azure lab, and write the paper before entering the lab.** 4-hour session limit, notoriously slow and buggy.
+8. **For the capstone, talk to your Course Instructor before you submit anything.** Task 1 needs their sign-off, and getting your topic approved early is one of the biggest time-savers in the whole program.
+9. **The D485 Azure lab environment has a known session time limit and can be slow.** Do your practice labs beforehand and screenshot your progress as you go.
 10. **Every course you finish is CEU/CPE fuel.** Each new CompTIA cert auto-renews your lower certs fee-free; each 3–4 CU course is worth 10 CompTIA CEUs, ~45 ISACA CPEs, 12 GIAC CPEs, and ISC2 Group A hours. See [Section 12](#12-the-ceucpe-maximizer).
 
 ---
@@ -309,7 +309,7 @@ Courses I want opened THIS TERM, in order:
 ────────────────────────────────────────────────
 Courses I expect to be hardest for me:
 Weeks I'll be unavailable (travel, work crunch, family):
-My capstone topic idea (technical solution, not policy):
+My capstone topic idea (run it by my instructor early):
 My personal early-warning sign that I'm falling behind:
 ```
 
@@ -326,7 +326,7 @@ Skip this if you're a WGU alum; read it twice if you're new.
 **Three kinds of faculty:**
 
 - **Program Mentor** — assigned at enrollment, with you to graduation. Weekly calls at first; they control your degree plan and course activation. See [Section 5](#5-your-day-one-mentor-roadmap-copy-paste).
-- **Course Instructors** — subject-matter experts per course. They run **live cohorts and record them** — and those recordings/FAQ docs are repeatedly described by graduates as the closest thing to an answer key WGU offers (D486's cohort deck "contains answer guidance"; D485's Task Guide and pacing guide; D482's FAQ; capstone cohort recordings). They'll also pre-review PA drafts — one student's instructor caught a missing requirement before submission, saving a failed attempt ([thread](https://old.reddit.com/r/WGUCyberSecurity/comments/1rmdco2/my_mscsia_journey_has_begun/)).
+- **Course Instructors** — subject-matter experts per course. They run **live cohorts and record them**, and those recordings plus each course's FAQ/task-guide documents are consistently the resource graduates recommend checking first — it's the legitimate, WGU-provided way to get clarity on what a task is actually asking for. They'll also pre-review PA drafts before you submit — one student's instructor caught a missing requirement before submission, saving a failed attempt ([thread](https://old.reddit.com/r/WGUCyberSecurity/comments/1rmdco2/my_mscsia_journey_has_begun/)). **Ask for a pre-review every time — it's free and it's sanctioned.**
 - **Evaluators** — doctoral-level, anonymous, rubric-driven. Papers commonly come back in **under 9–24 hours**; capstone tasks can take the full ~2 business days ([thread](https://old.reddit.com/r/WGUCyberSecurity/comments/1nib4uk/task_3_submitted_d490_mscsia/)). Master's evaluators are stricter than bachelor's — expect revision requests and don't take them personally.
 
 **Two kinds of assessment:**
@@ -343,8 +343,66 @@ Skip this if you're a WGU alum; read it twice if you're new.
 
 ---
 
+## 7. Course-by-Course Playbook
 
-Master's capstone evaluators are the strictest in the program (one student got 30 revision items on a single attempt). Browse the **[Model Capstone Archive](https://westerngovernorsuniversity.sharepoint.com/sites/capstonearchives/excellence/Pages/Home.aspx)** (via [WGU's blog](https://www.wgu.edu/blog/new-way-access-capstone-work-previous-grads1712.html)) for real passing examples before you pick a topic.
+**A note on what's in this section:** in line with WGU's academic-integrity policy, this section deliberately does **not** describe the content of any WGU-authored assessment — no task prompts, no exam topics/questions, no rubric specifics, no task structure. What it does cover: whether a course is PA, OA, or a third-party cert exam (already in the Section 2 table), community-reported time ranges, and publicly available third-party prep resources (textbooks, practice-exam vendors, hands-on-lab platforms). For what a course actually covers, use WGU's own [program guide](https://www.wgu.edu/online-it-degrees/cybersecurity-information-assurance-masters-program/program-guide.html), and once you're enrolled, your Course Instructor's cohort sessions and FAQ docs — that's the legitimate, WGU-sanctioned way to get task-specific clarity. Time estimates are community reports from experienced practitioners — scale up if you're newer.
+
+**Each entry below links the official catalog description** — the page in WGU's public [Institutional Catalog PDF (August 2026)](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf) where that course's real WGU-authored description lives (pp. 265–330 is the full course-description index, alphabetized by code). Catalogs reissue every few months and codes/pages shift — if the link or page number doesn't match what you see, WGU has published a newer edition; search [wgu.edu/about/institutional-catalog.html](https://www.wgu.edu/about/institutional-catalog.html) for the current one.
+
+### E123 — Cybersecurity Fundamentals (2 CU, PA)
+*Official course description: [WGU Institutional Catalog, p. 330](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=330)*
+
+Replaces D481. Brand new to the Aug 2026 catalog — no community writeups yet. Check the course's own announcements and cohort recordings once you're enrolled, and consider posting the first community writeup for the students behind you.
+
+### D482 — Secure Network Design (3 CU, PA)
+*Official course description: [WGU Institutional Catalog, p. 295](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=295)*
+
+**Time:** 3 days–2 weeks, community-reported. **General tips:** watch the course's cohort videos and use its FAQ doc; read the rubric line by line and answer every bullet explicitly rather than aiming for a page count; ask your Course Instructor for a pre-review before you submit. **Free Visio** comes with your [Azure for Students](https://azure.microsoft.com/en-us/free/students/) benefits if the course involves any network diagramming (Section 10).
+
+### D487 — Secure Software Design (3 CU, OA)
+*Official course description: [WGU Institutional Catalog, p. 295](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=295)*
+
+**Time:** 1–3 days with prep. This is the course most finishers pre-study before their start date, since it's OA-based and built around a known textbook — identify it early and read ahead if you can. **General tip:** use the course's own review-question set and pre-assessment as your diagnostic, and study only what you actually miss rather than re-reading everything.
+
+### D483 — Security Operations (4 CU, cert exam — CompTIA CySA+)
+*Official course description: [WGU Institutional Catalog, p. 295](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=295)*
+
+You pass this course by passing CompTIA's CySA+ (CS0-003) exam; WGU's voucher covers two attempts. This and D484 are the two courses experienced students most often clear via cert transfer, since the pass condition is a full external certification exam rather than a WGU-authored assessment — CompTIA publishes its own exam objectives, so studying for it isn't a gray area. **Community-recommended prep stack:** Sybex CySA+ Study Guide (Chapple/Seidl) + [Jason Dion](https://www.diontraining.com/) practice exams + [PocketPrep](https://www.pocketprep.com/) — most students use CertMaster only as much as needed to clear WGU's voucher-eligibility gate, not as primary instruction. Sequencing tip: many students study CySA+ and PenTest+ back-to-back since CompTIA's own objectives overlap.
+
+### D485 — Cloud Security (4 CU, PA + hands-on lab)
+*Official course description: [WGU Institutional Catalog, p. 295](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=295)*
+
+**Time:** 2–5 days with prior cloud experience, 1–2 weeks without. **General tips:** the hands-on Azure lab environment has a known session time limit and can be slow to work with — do any practice labs and [Microsoft Learn](https://learn.microsoft.com/) Azure walkthroughs beforehand so you're not learning the platform and the material at the same time, and screenshot your progress as you go. Use the course's own Task Guide and pacing guide for what's actually required.
+
+### D484 — Penetration Testing (4 CU, cert exam — CompTIA PenTest+ + short PA)
+*Official course description: [WGU Institutional Catalog, p. 295](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=295)*
+
+You pass the core of this course via CompTIA's PenTest+ exam, plus a shorter written component. **Time:** 2.5–6 weeks community-reported for students without prior pentesting background. **Prep stack:** Sybex PenTest+ (Chapple) + [Jason Dion](https://www.diontraining.com/) exams + [PocketPrep](https://www.pocketprep.com/), plus **[TryHackMe](https://tryhackme.com/)** for hands-on practice ([20% student discount](https://tryhackme.com/students)) — CompTIA's own published exam objectives are your authoritative reference. Ride any CySA+ momentum straight into this one; the fundamentals overlap.
+
+### D488 — Cybersecurity Architecture & Engineering (4 CU, OA; optional SecurityX voucher)
+*Official course description: [WGU Institutional Catalog, p. 295](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=295)*
+
+Passing this course banks an **optional** CompTIA SecurityX voucher (valid roughly a year) — several grads sit SecurityX after graduating rather than during the term. **Time:** 1–4 days community-reported if CySA+/PenTest+ material is still fresh. **General tip:** community consensus is to study from a CASP+/SecurityX guide rather than relying on CertMaster as primary instruction, since the OA is a WGU-authored exam, not the SecurityX exam itself.
+
+### E122 — Human-Centric Risk in Cybersecurity (3 CU) 🆕
+*Official course description: [WGU Institutional Catalog, p. 330](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=330)*
+
+Brand new to the Aug 2026 catalog — no community intel yet. Check the course's own announcements and cohorts, and post the first writeup.
+
+### D489 — Cybersecurity Management (4 CU, PA; optional CISM voucher)
+*Official course description: [WGU Institutional Catalog, p. 295](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=295)*
+
+**Time:** a couple of days community-reported for an experienced writer. **General tip:** this course leans on specific industry-standard publications that are required reading regardless of the assignment — write directly from those primary sources rather than from memory or outside summaries, and keep your answer format consistent across sections. Grads consistently rate this course the most job-relevant in the program. If you already hold CISM, the whole course transfers. **CISM prep:** ISACA Official Review Manual + QAE question database. **[ISACA student membership is $25/year and gives 30% off exam registration](https://www.isaca.org/membership/student-hub)** — worth setting up before you register for anything ISACA.
+
+### E121 — GRC in the Age of AI (2 CU; optional AAISM voucher) 🆕
+*Official course description: [WGU Institutional Catalog, p. 330](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=330)*
+
+Replaces D486. Aligned to ISACA's **AAISM** (Advanced in AI Security Management) — note that **AAISM is only awarded to active CISM or CISSP holders** ([ISACA](https://www.isaca.org/credentialing/aaism)), so sequence D489/CISM first if you want the credential to actually issue once you pass. Community coverage is thin since this is a new course — lean on the course's own materials and cohort recordings.
+
+### D490 — Cybersecurity Graduate Capstone (4 CU, 3 tasks)
+*Official course description: [WGU Institutional Catalog, p. 295](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=295)*
+
+Widely reported as the longest course in the program for most students, with a wide range of finish times depending largely on how quickly your topic gets instructor sign-off. **Talk to your Course Instructor before you write anything** — Task 1 requires their approval and generally can't fully clear until your other coursework is further along, so starting that conversation in week one, not month five, is one of the highest-leverage things you can do in this program. Browse the **[Model Capstone Archive](https://westerngovernorsuniversity.sharepoint.com/sites/capstonearchives/excellence/Pages/Home.aspx)** (via [WGU's blog](https://www.wgu.edu/blog/new-way-access-capstone-work-previous-grads1712.html)) for real passing examples before you pick a topic.
 
 ---
 
@@ -352,10 +410,10 @@ Master's capstone evaluators are the strictest in the program (one student got 3
 
 1. **Pre-clear the cert courses** ([Section 4.2](#42-the-cert-transfer-strategy-the-single-biggest-lever)). Every sub-3-month finish transferred in CySA+/PenTest+ at minimum.
 2. **Pre-study before day one.** The application-to-start gap is 1–3 months of free runway: read the D487 book, drill cert objectives, sketch your capstone topic. One finisher knew his capstone topic before the program started.
-3. **Order matters.** A battle-tested sequence for the old catalog: quick OA win first (D487) → D482 PA while fresh → cert courses as the core grind (CySA+ → PenTest+ back-to-back for overlap) → D488 immediately after (it's a review of the CompTIA trio) → GRC + D489 papers back-to-back (same NIST/PCI toolkit — one student did both in 4 days) → capstone last. Map the same logic onto the new catalog's prereq chain.
+3. **Order matters.** A battle-tested sequence for the old catalog: quick OA win first (D487) → D482 PA while fresh → cert courses as the core grind (CySA+ → PenTest+ back-to-back for overlap) → D488 immediately after (it builds on the CompTIA trio) → GRC + D489 papers back-to-back (their required source material overlaps) → capstone last. Map the same logic onto the new catalog's prereq chain.
 4. **PA-first triage on every OA course.** Day one: pre-assessment cold → coaching report → study misses only → OA within 24–48h.
 5. **Feed the mentor loop.** Bring [the roadmap](#5-your-day-one-mentor-roadmap-copy-paste), hit your first commitments, and course activations become same-day rubber stamps. Courses added mid-term are free.
-6. **Papers: rubric literalism.** Suggested page counts are decoration. A 16-page D489 with every bullet answered beats a 30-page essay. Have the instructor pre-review anything you're unsure of — free insurance against a failed attempt.
+6. **Papers: rubric literalism.** Suggested page counts are decoration — a shorter paper that answers every rubric bullet explicitly beats a long one that doesn't. Have the instructor pre-review anything you're unsure of — free insurance against a failed attempt.
 7. **Batch your evenings.** The 21-day finisher pulled 12-hour days; the realistic version while working full-time is 40–50 minute sprints + flashcard apps in dead time + 1.5× cohort videos. Total time to degree for experienced folks: she counted **~80 hours** of actual work.
 8. **Know the eval rhythm.** Papers back in <24h typically; submit before bed, revise at breakfast. Capstone ~2 days — pipeline Task 3 writing while Task 2 sits in the queue.
 9. **Don't torch yourself.** Rhino's counterpoint after finishing in 3.5 months: don't rush past the learning — the knowledge is the point, and burnout costs more time than it saves ([thread](https://old.reddit.com/r/WGUCyberSecurity/comments/1ugqjgi/rhinos_mscsia_journey_is_finito/)).
@@ -529,8 +587,8 @@ The most important line is "question bank cold." Most people study everything ev
 This program is unusually lopsided, so this matters more here than in the bachelor's:
 
 - **Cert exam courses** (D483 CySA+, D484 PenTest+): video course + question bank + labs. This is where TryHackMe and PocketPrep earn their money. **Skip CertMaster as your primary** — the community is near-unanimous.
-- **WGU OA courses** (D487, D488): the WGU course material + pre-assessment loop, plus one targeted outside text for the gap (the cryptography chapter of a CASP+/SecurityX guide for D488, the course textbook for D487). External platforms help less because the OA is written to WGU's material.
-- **PA courses** (D482, D485, D489, E121, E122, D490 — **six of eleven courses**): **no platform helps at all.** The rubric, the course instructor's cohort recording, and the NIST/PCI source documents are the entire toolkit. Do not go looking for a course to watch. This is the biggest single difference between the MSCSIA and a certification-track program: **more than half your degree is writing, and the skill that carries you is rubric literalism, not video hours.**
+- **WGU OA courses** (D487, D488): the WGU course material + pre-assessment loop, plus one targeted outside text if you find a specific gap (a broader CASP+/SecurityX guide, or the course's own textbook). External platforms help less because the OA is written to WGU's own material, not a public exam blueprint.
+- **PA courses** (D482, D485, D489, E121, E122, D490 — **six of eleven courses**): **no external platform helps much here.** The rubric, your Course Instructor's cohort recording, and whatever source documents the course itself points you to are the real toolkit. Do not go looking for a video course to watch instead. This is the biggest single difference between the MSCSIA and a certification-track program: **more than half your degree is writing, and the skill that carries you is rubric literalism, not video hours.**
 
 ### Three practical guardrails
 

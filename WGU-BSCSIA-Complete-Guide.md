@@ -57,7 +57,7 @@
 6. **Book ISC2 exams early.** In-person testing center required (some use palm/vein scanners), and slots fill up. Don't leave it for the last week of a term.
 7. **CompTIA enforces a mandatory 14-day wait after two failed attempts** on the same exam. Don't gamble a cert exam near a term boundary.
 8. **Bring a written roadmap to your first mentor call.** [Section 5](#5-your-day-one-mentor-roadmap-copy-paste) has a copy-paste template. Mentors control which courses get opened; showing up with a plan changes that relationship immediately.
-9. **The capstone is "just another PA."** No required technical build, no thesis — unlike the master's capstone. Set expectations accordingly.
+9. **The capstone is generally reported as more approachable than the master's-level MSCSIA capstone.** Set expectations accordingly, and use your instructor's cohort materials.
 10. **Spend a little of your own money on the right adjacent certs.** Your coursework already covers most of the material for several certs WGU doesn't pay for — some cost as little as $0–$100. See [Section 9](#9-certs-wgu-doesnt-pay-for-but-your-coursework-covers).
 
 ---
@@ -420,21 +420,23 @@ The distinction is simple: **study materials, yes. Assessment materials, no.**
 
 37 courses is too many for a deep dive on each. Community writeup energy concentrates on the cert-bearing and historically-hard courses, so that's the focus. Treat the non-cert gen-eds and foundations courses as generally straightforward unless a thread says otherwise.
 
+**Each course below links its official catalog description** — the page in WGU's public [Institutional Catalog PDF (August 2026)](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf) where that course's real WGU-authored description lives (pp. 265–330 is the full course-description index, alphabetized by code). Catalogs reissue every few months and codes/pages shift — if a link or page doesn't match what you see, WGU has published a newer edition; check [wgu.edu/about/institutional-catalog.html](https://www.wgu.edu/about/institutional-catalog.html) for the current one.
+
 ### The cert-bearing courses
 
-**IT Foundations / IT Applications → CompTIA A+ (Core 1 & 2).** The first real cert wall. Free prep that works: [Professor Messer's A+ 220-1201](https://www.professormesser.com/free-a-plus-training/220-1201/220-1201-video/220-1201-training-course/) and [220-1202](https://www.professormesser.com/free-a-plus-training/220-1202/220-1202-video/220-1202-training-course/) courses are complete, free, and current. Pair with a practice-question bank rather than relying solely on bundled CertMaster.
+**IT Foundations / IT Applications → CompTIA A+ (Core 1 & 2).** *(WGU Catalog: D316 & D317, [p. 285](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=285))* The first real cert wall. Free prep that works: [Professor Messer's A+ 220-1201](https://www.professormesser.com/free-a-plus-training/220-1201/220-1201-video/220-1201-training-course/) and [220-1202](https://www.professormesser.com/free-a-plus-training/220-1202/220-1202-video/220-1202-training-course/) courses are complete, free, and current. Pair with a practice-question bank rather than relying solely on bundled CertMaster.
 
-**Networks → CompTIA Network+.** Free prep: [Professor Messer N10-009](https://www.professormesser.com/network-plus/n10-009/n10-009-video/n10-009-training-course/). Foundational — later security courses assume you know this cold.
+**Networks (D325) → CompTIA Network+.** *(WGU Catalog: [p. 285](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=285))* Free prep: [Professor Messer N10-009](https://www.professormesser.com/network-plus/n10-009/n10-009-video/n10-009-training-course/). Foundational — later security courses assume you know this cold.
 
-**Network and Security – Applications → CompTIA Security+.** One of the genuine bottlenecks. Free prep: [Professor Messer SY0-701](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/sy0-701-comptia-security-plus-course/).
+**Network and Security – Applications (D329) → CompTIA Security+.** *(WGU Catalog: [p. 285](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=285))* One of the genuine bottlenecks. Free prep: [Professor Messer SY0-701](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/sy0-701-comptia-security-plus-course/).
 
-**Information Systems Security (C845) → ISC2 SSCP (optional).** **OA-based against WGU's own exam** — passing WGU's OA passes the course. WGU then offers a free SSCP voucher, which the community strongly recommends taking (it's a respected credential and it's free), but **you don't have to sit ISC2's exam to pass the course or graduate.** One student reported this course recently shifted from OA to PA — check the current format with your instructor.
+**Information Systems Security (C845) → ISC2 SSCP (optional).** *(WGU Catalog: [p. 270](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=270))* **OA-based against WGU's own exam** — passing WGU's OA passes the course. WGU then offers a free SSCP voucher, which the community strongly recommends taking (it's a respected credential and it's free), but **you don't have to sit ISC2's exam to pass the course or graduate.** One student reported this course recently shifted from OA to PA — check the current format with your instructor.
 
-**Managing Cloud Security → ISC2 CCSP (optional).** Same structure: OA-based, optional CCSP voucher afterward.
+**Managing Cloud Security (D320) → ISC2 CCSP (optional).** *(WGU Catalog: [p. 285](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=285))* Same structure: OA-based, optional CCSP voucher afterward.
 
-**Cyber Defense and Countermeasures → CompTIA CySA+.** Unlike the ISC2-adjacent courses, this one **is** the vendor exam. Budget real prep time. *(Note: this is the course Study.com identifies as no longer transferable post-March-2026 — you're taking it at WGU regardless.)*
+**Cyber Defense and Countermeasures (D340) → CompTIA CySA+.** *(WGU Catalog: [p. 286](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=286))* Unlike the ISC2-adjacent courses, this one **is** the vendor exam. Budget real prep time. *(Note: this is the course Study.com identifies as no longer transferable post-March-2026 — you're taking it at WGU regardless.)*
 
-**Penetration Testing and Vulnerability Analysis (D332) → CompTIA PenTest+.** The other major bottleneck and the best-documented course in current threads. From two independent 2026 completion posts — both scored in the low 700s out of 900, so **expect a squeaker, not a cruise**:
+**Penetration Testing and Vulnerability Analysis (D332) → CompTIA PenTest+.** *(WGU Catalog: [p. 286](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=286))* The other major bottleneck and the best-documented course in current threads. From two independent 2026 completion posts — both scored in the low 700s out of 900, so **expect a squeaker, not a cruise**:
 
 | Resource | Verdict |
 |---|---|
@@ -448,25 +450,25 @@ The distinction is simple: **study materials, yes. Assessment materials, no.**
 
 Retake note: mentors have granted a second voucher over the phone without much friction when a fail was close.
 
-**Business of IT – Applications → ITIL 4 Foundation.** One of the lighter cert courses.
+**Business of IT – Applications (D336) → ITIL 4 Foundation.** *(WGU Catalog: [p. 286](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=286))* One of the lighter cert courses.
 
-**Business of IT – Project Management → CompTIA Project+.** Some accelerators route around this via Sophia if they don't value Project+ — just make sure you still take the *other* Business of IT course for ITIL.
+**Business of IT – Project Management (D324) → CompTIA Project+.** *(WGU Catalog: [p. 285](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=285))* Some accelerators route around this via Sophia if they don't value Project+ — just make sure you still take the *other* Business of IT course for ITIL.
 
-**Data Analytics – Applications (D492) → CompTIA Data+.** New to the post-2025 catalog; thin community coverage. Post yours.
+**Data Analytics – Applications (D492) → CompTIA Data+.** *(WGU Catalog: [p. 295](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=295))* New to the post-2025 catalog; thin community coverage. Post yours.
 
-**Linux Foundations → LPI Linux Essentials.** Approachable, especially with prior command-line exposure. Build the [home lab](#104-build-a-home-lab-before-you-need-one) before this course, not during it.
+**Linux Foundations (D281) → LPI Linux Essentials.** *(WGU Catalog: [p. 283](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=283))* Approachable, especially with prior command-line exposure. Build the [home lab](#104-build-a-home-lab-before-you-need-one) before this course, not during it.
 
 ### The programming/data cluster (new to the current catalog)
 
-**Foundations of Programming (Python), Python for IT Automation (D522), Version Control, Introduction to AI and Security (D831), Software Security and Testing (D385).** New or restructured as of Sept 2025. Thin BSCSIA-specific coverage so far — but note that **D522 has a rough reputation in the BSIT community**, where it's described as the hardest course in that program ("spent an entire term on it and still failed"). Budget accordingly; don't assume it's easy because it's early-numbered.
+**Foundations of Programming (Python) [E010], Python for IT Automation (D522), Version Control [D197], Introduction to AI and Security (D831), Software Security and Testing (D385).** *(WGU Catalog: E010 [p. 325](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=325) · D522 [p. 296](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=296) · D197 [p. 280](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=280) · D831 [p. 317](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=317) · D385 [p. 290](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=290))* New or restructured as of Sept 2025. Thin BSCSIA-specific coverage so far — but note that **D522 has a rough reputation in the BSIT community**, where it's described as the hardest course in that program ("spent an entire term on it and still failed"). Budget accordingly; don't assume it's easy because it's early-numbered.
 
 ### Discrete Math, split (D420 / D421 / D422)
 
-One course became three 1-CU courses (Logic; Functions and Relations; Algorithms and Cryptography). Same total content, but each assessment is shorter and easier to schedule around a busy week.
+One course became three 1-CU courses (Logic; Functions and Relations; Algorithms and Cryptography). *(WGU Catalog: D420 [p. 291](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=291) · D421 [p. 291](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=291) · D422 not listed as a standalone entry in this catalog edition — confirm the current code with your mentor)* Same total content, but each assessment is shorter and easier to schedule around a busy week.
 
 ### The capstone
 
-**Set expectations correctly: a recent grad described it as "just another PA."** No required technical build, no thesis defense — a meaningful contrast with the *master's* MSCSIA capstone, which explicitly requires designing a technical security solution. Work the rubric, don't over-scope the topic, use the instructor's cohort materials.
+**Set expectations correctly: a recent grad described it as more approachable than the master's-level MSCSIA capstone.** *(WGU Catalog: D833, [p. 317](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=317))* Work the rubric, don't over-scope the topic, and use the instructor's cohort materials.
 
 ---
 

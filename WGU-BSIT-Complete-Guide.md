@@ -499,25 +499,29 @@ Skip this if you're a WGU alum; read it twice if you're new.
 
 With the program mid-overhaul, per-course writeups for the *new* codes are still thin. This section leans on the most recent available threads and flags where coverage doesn't exist yet.
 
+**Each course below links its official catalog description** — the page in WGU's public [Institutional Catalog PDF (August 2026)](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf) where that course's real WGU-authored description lives (pp. 265–330 is the full course-description index, alphabetized by code). Catalogs reissue every few months and codes/pages shift — if a link or page doesn't match what you see, WGU has published a newer edition; check [wgu.edu/about/institutional-catalog.html](https://www.wgu.edu/about/institutional-catalog.html) for the current one.
+
 ### The cert-bearing courses
 
-**IT Foundations / IT Applications → CompTIA A+ (Core 1 & 2).** The first cert wall. Free prep that works: [Professor Messer A+ 220-1201](https://www.professormesser.com/free-a-plus-training/220-1201/220-1201-video/220-1201-training-course/) and [220-1202](https://www.professormesser.com/free-a-plus-training/220-1202/220-1202-video/220-1202-training-course/) — complete, free, current.
+**IT Foundations / IT Applications → CompTIA A+ (Core 1 & 2).** *(WGU Catalog: D316 & D317, [p. 285](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=285))* The first cert wall. Free prep that works: [Professor Messer A+ 220-1201](https://www.professormesser.com/free-a-plus-training/220-1201/220-1201-video/220-1201-training-course/) and [220-1202](https://www.professormesser.com/free-a-plus-training/220-1202/220-1202-video/220-1202-training-course/) — complete, free, current.
 
-**Networks (D325) → CompTIA Network+.** Free prep: [Professor Messer N10-009](https://www.professormesser.com/network-plus/n10-009/n10-009-video/n10-009-training-course/). Foundational — budget real time if you haven't touched networking.
+**Networks (D325) → CompTIA Network+.** *(WGU Catalog: [p. 285](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=285))* Free prep: [Professor Messer N10-009](https://www.professormesser.com/network-plus/n10-009/n10-009-video/n10-009-training-course/). Foundational — budget real time if you haven't touched networking.
 
-**Network and Security – Applications (D329) → CompTIA Security+.** One of the harder stretches without a security background — and the most valuable cert to hold for CEU purposes after graduation ([Section 12](#12-the-ceucpe-maximizer)). Free prep: [Professor Messer SY0-701](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/sy0-701-comptia-security-plus-course/).
+**Network and Security – Applications (D329) → CompTIA Security+.** *(WGU Catalog: [p. 285](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=285))* One of the harder stretches without a security background — and the most valuable cert to hold for CEU purposes after graduation ([Section 12](#12-the-ceucpe-maximizer)). Free prep: [Professor Messer SY0-701](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/sy0-701-comptia-security-plus-course/).
 
-**Cloud Applications (D318) → CompTIA Cloud+.** New to the current catalog; limited deep writeups yet.
+**Cloud Applications (D318) → CompTIA Cloud+.** *(WGU Catalog: [p. 285](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=285))* New to the current catalog; limited deep writeups yet.
 
-**Cloud Foundations → AWS Certified Cloud Practitioner.** Generally approachable. [AWS Skill Builder's free tier](https://skillbuilder.aws/) has solid CLF-C02 prep, and [AWS Educate](https://aws.amazon.com/education/awseducate/) gives you free hands-on labs.
+**Cloud Foundations (D282) → AWS Certified Cloud Practitioner.** *(WGU Catalog: [p. 283](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=283))* Generally approachable. [AWS Skill Builder's free tier](https://skillbuilder.aws/) has solid CLF-C02 prep, and [AWS Educate](https://aws.amazon.com/education/awseducate/) gives you free hands-on labs.
 
-**Project Management (E015) → CompTIA Project+.** Some accelerators route around this via Sophia/Study.com if they don't value Project+ — just make sure you're still taking Business of IT – Applications for ITIL.
+**Project Management (E015) → CompTIA Project+.** *(WGU Catalog: [p. 326](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=326))* Some accelerators route around this via Sophia/Study.com if they don't value Project+ — just make sure you're still taking Business of IT – Applications for ITIL.
 
-**Linux Foundations → LPI Linux Essentials.** Approachable, especially with command-line exposure. Build the [home lab](#104-build-a-home-lab-before-you-need-one) beforehand.
+**Linux Foundations (D281) → LPI Linux Essentials.** *(WGU Catalog: [p. 283](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=283))* Approachable, especially with command-line exposure. Build the [home lab](#104-build-a-home-lab-before-you-need-one) beforehand.
 
-**Business of IT – Applications → ITIL 4 Foundation.** One of the lighter cert courses.
+**Business of IT – Applications (D336) → ITIL 4 Foundation.** *(WGU Catalog: [p. 286](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=286))* One of the lighter cert courses.
 
 ### Python for IT Automation (D522) — the course to plan around
+
+*Official course description: [p. 296](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=296)*
 
 **The single most-flagged hard course in the post-overhaul catalog.** Direct community quote: *"worst class I've taken so far... spent an entire term on it and still failed miserably."* Currently OA-based, with a persistent (unconfirmed) rumor it may convert to a PA — check the current format with your instructor before building a term plan around it.
 
@@ -527,19 +531,23 @@ Prep that helps: your Udemy access (Angela Yu's "100 Days of Code" is the commun
 
 ### Foundations of Programming – Python (E010)
 
+*Official course description: [p. 325](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=325)*
+
 More approachable than D522 — foundational syntax and concepts rather than automation-focused, higher-stakes material.
 
 ### The business/management cluster (mostly new: E005, E006, E007, E011, E012, D388)
+
+*Official course descriptions: E005/E006/E007/E011/E012 [p. 325](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=325) · D388 [p. 290](https://www.wgu.edu/content/dam/wgu-65-assets/western-governors/documents/institutional-catalog/2026/catalog-august-2026.pdf#page=290)*
 
 Business Productivity Software, Digital Transformation in the Enterprise, Agile Methodology, Technical Communication, IT Management and Leadership, and Fundamentals of Spreadsheets are largely new or renamed. **Almost no community writeups exist for these specific versions yet** — if you take one, consider being the first writeup on r/WGUIT.
 
 ### C777 (Web Development Applications) — legacy note, old catalog only
 
-If you're still on the old catalog, this has a long-standing reputation as the most disliked course in the program (*"pure garbage," "worst class I've taken"*) — though difficulty varies wildly: one grad with a web background did it in 2 days, others took a full month. **Removed from the new catalog entirely.**
+Removed from the current catalog entirely — **not in the August 2026 Institutional Catalog's course-description index**, so there's no live page to cite. If you're still on the old catalog, this has a long-standing reputation as the most disliked course in the program (*"pure garbage," "worst class I've taken"*) — though difficulty varies wildly: one grad with a web background did it in 2 days, others took a full month. **Removed from the new catalog entirely.**
 
 ### There is no capstone
 
-Confirmed removed (C769). For context if you're on the old plan and still facing it: former students describe two papers of roughly 20–28 pages each, walked through piece by piece — tedious rather than genuinely difficult. No replacement requirement has been reported.
+Confirmed removed (C769) — **also not in the current catalog's course-description index**, so no page to cite. For context if you're on the old plan and still facing it: former students describe it as a multi-part, staged writing project — tedious rather than genuinely difficult. No replacement requirement has been reported.
 
 ---
 

@@ -533,6 +533,7 @@ You're paying $5,125 a term. Every link below is direct — no searching require
 | **r/WGUCyberSecurity wiki** | Program-specific community knowledge base | [old.reddit.com/r/WGUCyberSecurity/wiki/index](https://old.reddit.com/r/WGUCyberSecurity/wiki/index) |
 | **r/WGU wiki** | University-wide | [old.reddit.com/r/WGU/wiki/index](https://old.reddit.com/r/WGU/wiki/index) |
 | **Subreddits** | [r/WGU](https://old.reddit.com/r/WGU/) · [r/WGUCyberSecurity](https://old.reddit.com/r/WGUCyberSecurity/) · [r/WGUIT](https://old.reddit.com/r/WGUIT/) · [r/WGU_Accelerators](https://old.reddit.com/r/WGU_Accelerators/) | — |
+| **Redditor Creations** | PenTest+ and CySA+ Study Guids - Don't overlook these! actually very well done! | https://jzesbaugh.github.io/pentest-plus-study-tool/ - https://github.com/UGL13RTH4NU/CySA-004 |
 
 > ⚠️ **Avoid commercial "WGU accelerator" answer sites.** Several sites market themselves as WGU course "solutions." They sell assessment content, which is an academic-integrity violation that can get you expelled.
 

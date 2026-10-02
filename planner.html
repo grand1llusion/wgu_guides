@@ -1,506 +1,478 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WGU Field Guide - Interactive Planner</title>
-    <style>
-        :root {
-            --wgu-blue: #002F51;
-            --wgu-light-blue: #007398;
-            --wgu-gold: #F1B434;
-            --bg-color: #f8f9fa;
-            --card-bg: #ffffff;
-            --text-dark: #333333;
-            --text-muted: #666666;
-            --border-radius: 8px;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-dark);
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        header h1 {
-            color: var(--wgu-blue);
-            margin-bottom: 10px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            padding: 25px;
-            border-radius: var(--border-radius);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            margin-bottom: 25px;
-        }
-
-        .card h2 {
-            color: var(--wgu-light-blue);
-            border-bottom: 2px solid var(--wgu-gold);
-            padding-bottom: 10px;
-            margin-top: 0;
-        }
-
-        select, input[type="range"] {
-            width: 100%;
-            padding: 10px;
-            margin-top: 10px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-            font-size: 16px;
-        }
-
-        /* Checkbox Grid */
-        .checkbox-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
-        }
-
-        .checkbox-item {
-            background: var(--bg-color);
-            padding: 10px;
-            border-radius: 4px;
-            border: 1px solid #e0e0e0;
-            display: flex;
-            align-items: flex-start;
-        }
-
-        .checkbox-item input {
-            margin-right: 10px;
-            margin-top: 4px;
-        }
-
-        .checkbox-label {
-            font-size: 14px;
-        }
-
-        .cu-badge {
-            background: var(--wgu-blue);
-            color: white;
-            padding: 2px 6px;
-            border-radius: 12px;
-            font-size: 12px;
-            margin-left: auto;
-        }
-
-        /* Progress Bar */
-        .progress-container {
-            background: #e0e0e0;
-            height: 20px;
-            border-radius: 10px;
-            overflow: hidden;
-            margin: 15px 0;
-        }
-
-        .progress-bar {
-            background: var(--wgu-light-blue);
-            height: 100%;
-            width: 0%;
-            transition: width 0.3s ease;
-        }
-
-        .progress-bar.warning {
-            background: var(--wgu-gold);
-        }
-
-        .progress-bar.danger {
-            background: #d9534f;
-        }
-
-        /* Results Dashboard */
-        .dashboard-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .stat-box {
-            background: var(--bg-color);
-            padding: 15px;
-            border-radius: var(--border-radius);
-            border: 1px solid #e0e0e0;
-        }
-
-        .stat-box h3 {
-            margin: 0;
-            font-size: 28px;
-            color: var(--wgu-blue);
-        }
-
-        .stat-box p {
-            margin: 5px 0 0;
-            font-size: 14px;
-            color: var(--text-muted);
-        }
-
-        .warning-text {
-            color: #d9534f;
-            font-weight: bold;
-            font-size: 14px;
-        }
-
-        /* Mentor Template */
-        textarea {
-            width: 100%;
-            height: 300px;
-            font-family: monospace;
-            padding: 15px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-            resize: vertical;
-            background: #fdfdfd;
-        }
-
-        #gen-ed-section {
-            transition: opacity 0.3s ease;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WGU Degree Blueprint</title>
+<style>
+  :root {
+    --wgu-blue: #002F51;
+    --wgu-light-blue: #007398;
+    --wgu-gold: #F1B434;
+    --bg: #f5f7f9;
+    --card: #ffffff;
+    --text: #222a31;
+    --muted: #5f6b75;
+    --line: #dde3e8;
+    --soft: #eef3f6;
+    --ok: #1d7a46;
+    --ok-bg: #e5f4ec;
+    --warn: #8a5a00;
+    --warn-bg: #fff4dc;
+    --bad: #b3261e;
+    --bad-bg: #fde8e7;
+    --radius: 10px;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 20px 16px 60px; background: var(--bg); color: var(--text);
+         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.55; }
+  .container { max-width: 1040px; margin: 0 auto; }
+  header { text-align: center; margin: 10px 0 28px; }
+  header h1 { color: var(--wgu-blue); margin: 0 0 6px; font-size: 30px; }
+  header p { margin: 4px 0; }
+  .stamp { font-size: 12.5px; color: var(--muted); }
+  a { color: var(--wgu-light-blue); }
+  .card { background: var(--card); border-radius: var(--radius); padding: 22px 24px; margin-bottom: 20px;
+          box-shadow: 0 2px 6px rgba(0,0,0,.05); border: 1px solid var(--line); }
+  .card h2 { margin: 0 0 4px; color: var(--wgu-blue); font-size: 20px; }
+  .card h2 .step { display: inline-block; background: var(--wgu-gold); color: var(--wgu-blue); border-radius: 999px;
+                   font-size: 13px; padding: 2px 10px; margin-right: 8px; vertical-align: 2px; font-weight: 700; }
+  .card > .lead { color: var(--muted); margin: 4px 0 14px; font-size: 14.5px; }
+  h3 { color: var(--wgu-blue); font-size: 15.5px; margin: 18px 0 8px; }
+  select, input[type=range] { width: 100%; font-size: 16px; }
+  select { padding: 10px; border-radius: 6px; border: 1px solid #c7cfd6; background: #fff; }
+  .notes { background: var(--warn-bg); border-left: 4px solid var(--wgu-gold); border-radius: 6px; padding: 10px 14px; font-size: 14px; margin-top: 14px; }
+  .notes ul { margin: 6px 0 0; padding-left: 20px; }
+  .btn { display: inline-block; background: var(--wgu-blue); color: #fff; text-decoration: none; padding: 10px 16px;
+         border-radius: 6px; font-weight: 600; font-size: 14.5px; }
+  .btn:hover { background: var(--wgu-light-blue); }
+  .btn.secondary { background: #fff; color: var(--wgu-blue); border: 1px solid var(--wgu-blue); }
+  .muted { color: var(--muted); }
+  .small { font-size: 13px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
+  .chk { display: flex; gap: 10px; align-items: flex-start; background: var(--soft); border: 1px solid var(--line);
+         border-radius: 8px; padding: 9px 11px; cursor: pointer; }
+  .chk input { margin-top: 4px; flex: none; }
+  .chk .t { font-size: 14px; font-weight: 600; }
+  .chk .d { display: block; font-size: 12.5px; color: var(--muted); font-weight: 400; margin-top: 2px; }
+  .chk.on { background: #e3f1f6; border-color: var(--wgu-light-blue); }
+  .chk.dim { opacity: .6; }
+  .cu { margin-left: auto; flex: none; background: var(--wgu-blue); color: #fff; font-size: 11.5px; border-radius: 999px; padding: 2px 8px; height: fit-content; }
+  .cols2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .panel { border: 1px solid var(--line); border-radius: 8px; padding: 14px; }
+  .panel h3 { margin-top: 0; }
+  .meter { height: 10px; background: #e1e7ec; border-radius: 99px; overflow: hidden; margin: 6px 0 4px; }
+  .meter > div { height: 100%; background: var(--wgu-light-blue); width: 0; transition: width .25s; }
+  .meter > div.warn { background: var(--wgu-gold); }
+  .meter > div.bad { background: var(--bad); }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 10px 0 6px; }
+  .stat { background: var(--soft); border: 1px solid var(--line); border-radius: 8px; padding: 12px; text-align: center; }
+  .stat b { display: block; font-size: 26px; color: var(--wgu-blue); line-height: 1.2; }
+  .stat span { font-size: 12.5px; color: var(--muted); }
+  .warnings { margin: 10px 0 0; padding: 0; list-style: none; }
+  .warnings li { background: var(--bad-bg); color: var(--bad); border-radius: 6px; padding: 8px 12px; margin-bottom: 6px; font-size: 13.5px; }
+  .warnings li.info { background: var(--warn-bg); color: var(--warn); }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th { text-align: left; font-size: 12.5px; color: var(--muted); font-weight: 600; border-bottom: 2px solid var(--line); padding: 8px 6px; }
+  td { border-bottom: 1px solid var(--line); padding: 8px 6px; vertical-align: top; }
+  td.code { font-family: Consolas, monospace; font-size: 12.5px; color: var(--muted); white-space: nowrap; }
+  .badge { display: inline-block; border-radius: 999px; padding: 2px 9px; font-size: 12px; font-weight: 600; white-space: nowrap; }
+  .b-cert { background: #e3effd; color: #1a4f8b; }
+  .b-prior { background: #efe6fb; color: #5b2a91; }
+  .b-sophia { background: var(--ok-bg); color: var(--ok); }
+  .b-study { background: #e2f5f3; color: #11695f; }
+  .b-left { background: var(--soft); color: var(--muted); }
+  .b-wgu { background: var(--bad-bg); color: var(--bad); }
+  .vcert { font-size: 11.5px; color: var(--warn); display: block; margin-top: 2px; }
+  details summary { cursor: pointer; color: var(--wgu-light-blue); font-size: 12.5px; }
+  details p { margin: 4px 0 0; font-size: 12.5px; color: var(--muted); }
+  .prior-cell { text-align: center; }
+  textarea { width: 100%; height: 360px; font-family: Consolas, monospace; font-size: 12.5px; padding: 12px;
+             border: 1px solid #c7cfd6; border-radius: 6px; background: #fbfcfd; resize: vertical; }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .feedback { text-align: center; font-weight: 600; margin-top: 8px; }
+  footer { text-align: center; font-size: 12.5px; color: var(--muted); margin-top: 26px; }
+  @media (max-width: 720px) {
+    .cols2 { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: 1fr 1fr; }
+    th.hide-sm, td.hide-sm { display: none; }
+    header h1 { font-size: 24px; }
+    .card { padding: 18px 16px; }
+  }
+</style>
 </head>
 <body>
-
 <div class="container">
-    <header>
-        <h1>The WGU Degree Blueprint</h1>
-        <p>Map your transfers, slide your timeline, and generate your mentor roadmap.</p>
-    </header>
+  <header>
+    <h1>The WGU Degree Blueprint</h1>
+    <p>Map what you already have, plan what you'll clear before day one, and generate your mentor roadmap.</p>
+    <p class="stamp">Transfer data for BSCSIA and BSIT pulled from WGU's official <a href="https://partners.wgu.edu/home" target="_blank" rel="noopener">Transfer Pathways</a> data on October 2, 2026. Estimates only. WGU makes the final call during your transfer evaluation.</p>
+  </header>
 
-    <div class="card">
-        <h2>1. Select Your Program</h2>
-        <select id="program-select">
-            <option value="BSIT">B.S. Information Technology (BSIT) - 110 CUs</option>
-            <option value="BSCSIA">B.S. Cybersecurity & IA (BSCSIA) - 122 CUs</option>
-            <option value="MSCSIA">M.S. Cybersecurity & IA (MSCSIA) - 36 CUs</option>
-        </select>
+  <div class="card">
+    <h2><span class="step">1</span>Your program</h2>
+    <select id="program"></select>
+    <div id="program-notes" class="notes"></div>
+  </div>
+
+  <div class="card" id="card-prior">
+    <h2><span class="step">2</span>Prior college &amp; national agreements</h2>
+    <p class="lead">Went to a community college or university, or trained with a national partner (ACI Learning, Per Scholas, Microsoft Software &amp; Systems Academy, IBM, StraighterLine and others)? WGU publishes exactly which courses transfer from each partner.</p>
+    <ol class="small" style="margin:0 0 14px; padding-left:20px;">
+      <li>Open WGU's Transfer Pathways site and pick your state (for your previous college) or <em>National Agreements</em>.</li>
+      <li>Find your school, then choose <strong>School of Technology</strong> → your program. The table there tells you exactly which of your credits transfer to which WGU course.</li>
+      <li>Tick those courses in the <strong>Prior college</strong> column of the degree plan in Step 5 below.</li>
+    </ol>
+    <div class="row">
+      <a class="btn" href="https://partners.wgu.edu/home" target="_blank" rel="noopener">Open WGU Transfer Pathways ↗</a>
+      <span class="small muted">No agreement listed for your school? Credits can still transfer course by course. Each row's <em>What transfers</em> note in Step 5 shows WGU's rule.</span>
     </div>
+  </div>
 
-    <div class="card">
-        <h2>2. Mock Transfer Credit Evaluator</h2>
-        <p>Check the certs and external courses (Sophia/Study.com) you plan to transfer in. <strong>Remember: WGU does not accept transfer credit after you enroll.</strong></p>
-        
-        <div id="transfer-warnings" class="warning-text"></div>
-        
-        <div class="progress-container">
-            <div id="transfer-progress" class="progress-bar"></div>
-        </div>
-        <p style="text-align: right; font-size: 12px; margin-top: -10px;"><span id="transfer-percentage">0</span>% transferred (Cap: <span id="transfer-cap-display">75</span>%)</p>
+  <div class="card" id="card-certs">
+    <h2><span class="step">3</span>Certifications you already hold</h2>
+    <p class="lead">Check every certification you've earned <strong>within the last 5 years</strong>. The planner marks every course WGU's transfer guidelines list it for. Some certs clear several courses, but confirm the final count with an Enrollment Counselor.</p>
+    <div id="cert-groups"></div>
+  </div>
 
-        <h3 style="margin-top: 20px; font-size: 16px; color: var(--wgu-blue);">Industry Certifications</h3>
-        <div class="checkbox-grid" id="cert-grid">
-            </div>
-
-        <div id="gen-ed-section">
-            <h3 style="margin-top: 20px; font-size: 16px; color: var(--wgu-blue);">Sophia / Study.com (Gen-Eds & Core)</h3>
-            <div class="checkbox-grid" id="gen-ed-grid">
-                </div>
-        </div>
+  <div class="card" id="card-cram">
+    <h2><span class="step">4</span>Sophia &amp; Study.com: your pre-start plan</h2>
+    <p class="lead">These are cheap, self-paced courses students take <em>before</em> their WGU start date to knock out requirements. Transcripts must reach WGU by the <strong>5th of the month before you start</strong>, and nothing is accepted after you start. Mappings come from WGU's own agreements with each platform.</p>
+    <div class="cols2">
+      <div class="panel">
+        <h3>Sophia Learning <span class="small muted">· $99/mo</span></h3>
+        <div class="small muted" id="sophia-meta"></div>
+        <div class="meter"><div id="sophia-meter"></div></div>
+        <div id="sophia-list" class="grid" style="grid-template-columns:1fr;"></div>
+        <p class="small" style="margin-bottom:0"><a id="sophia-link" target="_blank" rel="noopener">WGU's official Sophia table for this program ↗</a></p>
+      </div>
+      <div class="panel">
+        <h3>Study.com <span class="small muted">· from $95/mo</span></h3>
+        <div class="small muted" id="study-meta"></div>
+        <div class="meter"><div id="study-meter"></div></div>
+        <div id="study-list" class="grid" style="grid-template-columns:1fr;"></div>
+        <p class="small" style="margin-bottom:0"><a id="study-link" target="_blank" rel="noopener">WGU's official Study.com table for this program ↗</a></p>
+      </div>
     </div>
+    <p class="small muted" style="margin-bottom:0">Pick one platform per course. Never use them for a course whose built-in certification voucher you want, because clearing the course means giving up the free exam.</p>
+  </div>
 
-    <div class="card">
-        <h2>3. Pace & Timeline</h2>
-        <p>Drag the slider to set your target completion timeline. WGU terms are 6 months long.</p>
-        
-        <div style="margin: 20px 0;">
-            <label for="term-slider"><strong>Target Completion:</strong> <span id="term-display">2 Terms (12 Months)</span></label>
-            <input type="range" id="term-slider" min="1" max="10" value="2" step="1">
-        </div>
-
-        <div class="dashboard-stats">
-            <div class="stat-box">
-                <h3 id="stat-remaining-cu">110</h3>
-                <p>CUs Remaining</p>
-            </div>
-            <div class="stat-box">
-                <h3 id="stat-cu-per-term">55</h3>
-                <p>CUs required per Term</p>
-            </div>
-            <div class="stat-box">
-                <h3 id="stat-cost">$8,250</h3>
-                <p>Estimated WGU Tuition</p>
-            </div>
-        </div>
-        <p id="pace-feedback" style="text-align: center; font-weight: bold;"></p>
+  <div class="card">
+    <h2><span class="step">5</span>Your degree plan</h2>
+    <p class="lead">Every course in the standard path, and how it's cleared based on your choices above.</p>
+    <div class="stats">
+      <div class="stat"><b id="s-trans">0</b><span>CUs transferred</span></div>
+      <div class="stat"><b id="s-left">0</b><span>CUs left at WGU</span></div>
+      <div class="stat"><b id="s-courses">0</b><span>courses left</span></div>
+      <div class="stat"><b id="s-cap">0%</b><span id="s-cap-l">of 75% transfer cap</span></div>
     </div>
-
-    <div class="card">
-        <h2>4. Your Day-One Mentor Roadmap</h2>
-        <p>Copy and paste this into an email for your first Program Mentor call.</p>
-        <textarea id="mentor-template" readonly></textarea>
+    <div class="meter"><div id="cap-meter"></div></div>
+    <ul class="warnings" id="warnings"></ul>
+    <div style="overflow-x:auto;">
+      <table>
+        <thead><tr><th>Course</th><th class="hide-sm">Code</th><th>CU</th><th>How it's cleared</th><th class="prior-cell" id="prior-th">Prior college</th></tr></thead>
+        <tbody id="plan-body"></tbody>
+      </table>
     </div>
+  </div>
+
+  <div class="card">
+    <h2><span class="step">6</span>Pace &amp; timeline</h2>
+    <label for="terms"><strong>Target completion:</strong> <span id="terms-l"></span></label>
+    <input type="range" id="terms" min="1" max="10" value="2" step="1">
+    <div class="stats" style="grid-template-columns:repeat(3,1fr);">
+      <div class="stat"><b id="p-left">0</b><span>CUs to complete at WGU</span></div>
+      <div class="stat"><b id="p-per">0</b><span>CUs per term</span></div>
+      <div class="stat"><b id="p-cost">$0</b><span>estimated tuition</span></div>
+    </div>
+    <div class="feedback" id="pace"></div>
+  </div>
+
+  <div class="card">
+    <h2><span class="step">7</span>Your day-one mentor roadmap</h2>
+    <p class="lead">Copy this into an email to your Program Mentor before your first call, then use it as the agenda for weekly check-ins.</p>
+    <div class="row" style="margin-bottom:10px;"><button class="btn" id="copy" type="button">Copy roadmap</button><button class="btn secondary" id="reset" type="button">Reset this program</button><span class="small muted" id="copied"></span></div>
+    <textarea id="roadmap" readonly></textarea>
+  </div>
+
+  <footer>
+    Independent, community-maintained tool. Not affiliated with or endorsed by WGU. Transfer rules change, so always confirm with WGU Admissions or your Enrollment Counselor.<br>
+    Companion guides: <a href="./WGU-BSCSIA-Complete-Guide.md">BSCSIA</a> · <a href="./WGU-BSIT-Complete-Guide.md">BSIT</a> · <a href="./WGU-MSCSIA-Complete-Guide.md">MSCSIA</a>
+  </footer>
 </div>
 
 <script>
-    // --- DATA DICTIONARY ---
-    const programData = {
-        BSIT: {
-            name: "B.S. Information Technology",
-            totalCU: 110,
-            termCost: 4125,
-            transferCap: 0.75, // 75%
-            certs: [
-                { id: 'itil', name: 'ITIL 4 Foundation', cu: 4 },
-                { id: 'aplus', name: 'CompTIA A+ (Core 1 & 2)', cu: 8 },
-                { id: 'netplus', name: 'CompTIA Network+', cu: 4 },
-                { id: 'secplus', name: 'CompTIA Security+', cu: 4 },
-                { id: 'cloudplus', name: 'CompTIA Cloud+', cu: 3 },
-                { id: 'projectplus', name: 'CompTIA Project+', cu: 4 },
-                { id: 'linux', name: 'LPI Linux Essentials', cu: 3 },
-                { id: 'awscp', name: 'AWS Cloud Practitioner', cu: 3 }
-            ],
-            genEds: [
-                { id: 'comp', name: 'English Composition', cu: 3 },
-                { id: 'math', name: 'Applied Algebra', cu: 3 },
-                { id: 'stats', name: 'Probability & Statistics', cu: 3 },
-                { id: 'health', name: 'Health & Wellness', cu: 4 },
-                { id: 'science', name: 'Natural Science Lab', cu: 2 },
-                { id: 'intro-it', name: 'Intro to IT', cu: 3 },
-                { id: 'db', name: 'Data Management - Foundations', cu: 3 },
-                { id: 'web', name: 'Web Design Fundamentals', cu: 3 }
-            ]
-        },
-        BSCSIA: {
-            name: "B.S. Cybersecurity & IA",
-            totalCU: 122,
-            termCost: 4625,
-            transferCap: 0.75, // 75%
-            certs: [
-                { id: 'itil', name: 'ITIL 4 Foundation', cu: 4 },
-                { id: 'aplus', name: 'CompTIA A+ (Core 1 & 2)', cu: 8 },
-                { id: 'netplus', name: 'CompTIA Network+', cu: 4 },
-                { id: 'secplus', name: 'CompTIA Security+', cu: 4 },
-                { id: 'cysa', name: 'CompTIA CySA+', cu: 4 },
-                { id: 'pentest', name: 'CompTIA PenTest+', cu: 4 },
-                { id: 'projectplus', name: 'CompTIA Project+', cu: 4 },
-                { id: 'dataplus', name: 'CompTIA Data+', cu: 4 },
-                { id: 'linux', name: 'LPI Linux Essentials', cu: 3 },
-                { id: 'sscp', name: 'ISC2 SSCP', cu: 4 },
-                { id: 'ccsp', name: 'ISC2 CCSP', cu: 4 }
-            ],
-            genEds: [
-                { id: 'comp', name: 'English Composition', cu: 3 },
-                { id: 'math', name: 'Applied Algebra', cu: 3 },
-                { id: 'stats', name: 'Probability & Statistics', cu: 3 },
-                { id: 'health', name: 'Health & Wellness', cu: 4 },
-                { id: 'science', name: 'Natural Science Lab', cu: 2 },
-                { id: 'intro-it', name: 'Intro to IT', cu: 3 },
-                { id: 'python', name: 'Foundations of Python', cu: 3 },
-                { id: 'db', name: 'Data Management - Foundations', cu: 3 }
-            ]
-        },
-        MSCSIA: {
-            name: "M.S. Cybersecurity & IA",
-            totalCU: 36,
-            termCost: 5125,
-            transferCap: 0.50, // 50%
-            certs: [
-                { id: 'cysa_ms', name: 'CompTIA CySA+', cu: 4 },
-                { id: 'pentest_ms', name: 'CompTIA PenTest+', cu: 4 },
-                { id: 'cism', name: 'ISACA CISM', cu: 4 }
-            ],
-            genEds: [] // Grad degrees do not accept lower-division Sophia/Study.com transfers
-        }
-    };
+const DATA = {"pulled": "October 2, 2026", "programs": [{"key": "BSCSIA", "name": "B.S. Cybersecurity and Information Assurance", "short": "BSCSIA", "totalCU": 122, "termCost": 4625, "cap": 0.75, "minCU": 12, "hasPartners": true, "grad": false, "sophiaMax": 37, "studyMax": 47, "sophiaUrl": "https://partners.wgu.edu/transfer-pathway-agreement?uniqueId=BSCSIA7110&collegeCode=IT&instId=796&programId=253", "studyUrl": "https://partners.wgu.edu/transfer-pathway-agreement?uniqueId=BSCSIA4424&collegeCode=IT&instId=678&programId=253", "courses": [{"code": "C458", "title": "Health, Fitness, and Wellness", "cu": 4, "term": 1, "cert": null, "group": null, "area": "Gen Ed", "rule": "One 3–4 unit course in health, wellness, or nutrition (not physical activity or EMT)."}, {"code": "D685", "title": "Practical Applications of Prompt", "cu": 2, "term": 1, "cert": null, "group": null, "area": "Additional", "rule": "One 2-unit course in prompt engineering."}, {"code": "D270", "title": "Composition: Successful Self-Expression", "cu": 3, "term": 1, "cert": null, "group": null, "area": "Gen Ed", "rule": "One 3-unit written communication/composition course (business or technical writing accepted)."}, {"code": "E004", "title": "Introduction to IT", "cu": 3, "term": 1, "cert": null, "group": null, "area": "Core", "rule": "One 3-unit intro to IT course, or Google IT Support / CompTIA Tech+. IT associate/bachelor's degree can satisfy (within 5 years)."}, {"code": "D333", "title": "Ethics in Technology", "cu": 3, "term": 2, "cert": null, "group": null, "area": "Gen Ed", "rule": "One 3-unit course in ethical issues in technology. Cannot be satisfied by a degree."}, {"code": "D316", "title": "IT Foundations", "cu": 4, "term": 2, "cert": "CompTIA A+ (Core 1)", "group": 1, "area": "Additional", "rule": "CompTIA A+ certification."}, {"code": "C955", "title": "Applied Probability and Statistics", "cu": 3, "term": 2, "cert": null, "group": null, "area": "Gen Ed", "rule": "One 3-unit statistics course."}, {"code": "C683", "title": "Natural Science Lab", "cu": 2, "term": 2, "cert": null, "group": null, "area": "Gen Ed", "rule": "One 2-unit natural science lab (chemistry, geology, physics, astronomy, or biology)."}, {"code": "D317", "title": "IT Applications", "cu": 4, "term": 3, "cert": "CompTIA A+ (Core 2)", "group": 1, "area": "Additional", "rule": "CompTIA A+ certification."}, {"code": "C957", "title": "Applied Algebra", "cu": 3, "term": 3, "cert": null, "group": null, "area": "Gen Ed", "rule": "One 3-unit college algebra or higher course (not intermediate algebra or quantitative reasoning)."}, {"code": "D827", "title": "Fundamentals of Information Security", "cu": 3, "term": 3, "cert": null, "group": null, "area": "Additional", "rule": "One 3-unit IT security course, or one of many security certs (Security+, SecurityX, CEH, ISC2 CC/CISSP, CISM/CISA/CRISC, GSEC/GCED/GISF, SC-900/200/300…)."}, {"code": "D315", "title": "Network and Security – Foundations", "cu": 3, "term": 3, "cert": null, "group": 1, "area": "Core", "rule": "One 3-unit networking course with a security component, or Network+/Security+/PenTest+/CySA+/SecurityX/CEH/CCNA/GSEC and others."}, {"code": "D265", "title": "Critical Thinking: Reason and Evidence", "cu": 3, "term": 4, "cert": null, "group": null, "area": "Gen Ed", "rule": "One 3-unit course in critical thinking, reasoning, argument, or logic."}, {"code": "D325", "title": "Networks", "cu": 4, "term": 4, "cert": "CompTIA Network+", "group": 2, "area": "Additional", "rule": "Network+, or Cisco CCNA/CCNP/CCIE (Enterprise, Data Center, Service Provider)."}, {"code": "D268", "title": "Introduction to Communication: Connecting with Others", "cu": 3, "term": 4, "cert": null, "group": null, "area": "Gen Ed", "rule": "One 3-unit communications course."}, {"code": "D336", "title": "Business of IT – Applications", "cu": 4, "term": 4, "cert": "ITIL 4 Foundation", "group": null, "area": "Core", "rule": "One 4-unit business-of-IT course, or an active ITIL Foundation cert."}, {"code": "C963", "title": "American Politics and the US Constitution", "cu": 3, "term": 5, "cert": null, "group": null, "area": "Gen Ed", "rule": "One 3-unit U.S. government course."}, {"code": "D329", "title": "Network and Security – Applications", "cu": 4, "term": 5, "cert": "CompTIA Security+", "group": 3, "area": "Additional", "rule": "Security+, PenTest+, CySA+, SecurityX, CEH, Cisco CCNA / CCNP Security / CCIE Security, or GIAC GSE/GSEC/GCIA/GCED."}, {"code": "D828", "title": "Legal Issues in Information Security", "cu": 4, "term": 5, "cert": null, "group": null, "area": "Additional", "rule": "One 4-unit course in legal issues/policy in infosec, or GIAC GLEG, ISC2 CISSP, or ISACA CISM."}, {"code": "E071", "title": "Applied Discrete Mathematics", "cu": 3, "term": 5, "cert": null, "group": null, "area": "Gen Ed", "rule": "One 3-unit applied discrete math course taken within the past 5 years. Cannot be satisfied by a degree."}, {"code": "D830", "title": "Introduction to Cryptography", "cu": 4, "term": 6, "cert": null, "group": 4, "area": "Additional", "rule": "One 4-unit encryption or cryptography course."}, {"code": "D829", "title": "Digital Forensics in Cybersecurity", "cu": 4, "term": 6, "cert": null, "group": 4, "area": "Additional", "rule": "One 4-unit digital/computer forensics course, or EC-Council CHFI, GIAC GCFA or GCFE."}, {"code": "C845", "title": "Information Systems Security", "cu": 4, "term": 6, "cert": "ISC2 SSCP (optional voucher)", "group": 4, "area": "Additional", "rule": "ISC2 SSCP or CISSP, ISACA CISM/CISA/CGEIT/CRISC, or GIAC GSTRT."}, {"code": "E010", "title": "Foundations of Programming (Python)", "cu": 3, "term": 7, "cert": null, "group": 5, "area": "Additional", "rule": "One 3-unit intro to Python course from a college. Not accepted from Sophia/ACE-credit providers (WGU note, Jan 2026)."}, {"code": "D197", "title": "Version Control", "cu": 1, "term": 7, "cert": null, "group": 5, "area": "Additional", "rule": "One upper-division 1-unit version/source control course."}, {"code": "D522", "title": "Python for IT Automation", "cu": 3, "term": 7, "cert": null, "group": 5, "area": "Non-Transferable", "rule": "Must be completed at WGU."}, {"code": "D831", "title": "Introduction to AI and Security", "cu": 2, "term": 7, "cert": null, "group": 4, "area": "Additional", "rule": "One 2-unit AI and security course."}, {"code": "D385", "title": "Software Security and Testing", "cu": 3, "term": 7, "cert": null, "group": 4, "area": "Additional", "rule": "One 3-unit software security and testing course."}, {"code": "D281", "title": "Linux Foundations", "cu": 3, "term": 8, "cert": "LPI Linux Essentials", "group": null, "area": "Additional", "rule": "One 3-unit Linux course, or Linux+, LPI Linux Essentials/LPIC, LFCS, RHCSA/RHCE/RHCA, Oracle Linux 8 (1Z0-106)."}, {"code": "D426", "title": "Data Management – Foundations", "cu": 3, "term": 8, "cert": null, "group": null, "area": "Core", "rule": "One 3-unit database course, or CIW Database Design, DP-300, or Oracle Database Foundations (1Z0-006)."}, {"code": "D492", "title": "Data Analytics – Applications", "cu": 4, "term": 8, "cert": "CompTIA Data+", "group": null, "area": "Additional", "rule": "One 4-unit data analytics/data science course, or CompTIA Data+ or CAP-E/CAP-P/CAP-X."}, {"code": "D832", "title": "Managing Information Security", "cu": 3, "term": 8, "cert": null, "group": 4, "area": "Additional", "rule": "One senior-level 3-unit course in managing infosec, or CISM, CISA, CGEIT, CISSP, CCISO, or GIAC GSE."}, {"code": "D324", "title": "Business of IT – Project Management", "cu": 4, "term": 9, "cert": "CompTIA Project+", "group": null, "area": "Additional", "rule": "One 4-unit project management course, or Project+, PMP, or CAPM."}, {"code": "D340", "title": "Cyber Defense and Countermeasures", "cu": 4, "term": 9, "cert": "CompTIA CySA+", "group": 6, "area": "Additional", "rule": "One 4-unit cyber defense / incident response course, or EC-Council ECIH, GIAC GCIH, or CompTIA CySA+."}, {"code": "D320", "title": "Managing Cloud Security", "cu": 4, "term": 9, "cert": "ISC2 CCSP (optional voucher)", "group": 6, "area": "Additional", "rule": "One 4-unit cloud security course, or ISC2 CCSP or CSA CCSK."}, {"code": "D332", "title": "Penetration Testing and Vulnerability Analysis", "cu": 4, "term": 10, "cert": "CompTIA PenTest+", "group": 7, "area": "Additional", "rule": "PenTest+, EC-Council CEH, OffSec OSCP+ or OSCE3, or GIAC GPEN."}, {"code": "D833", "title": "Cybersecurity and Information Assurance Capstone", "cu": 4, "term": 10, "cert": null, "group": 8, "area": "Non-Transferable", "rule": "Must be completed at WGU."}], "sophia": {"C458": ["Introduction to Nutrition (SOPH-0063)", "Health, Fitness, and Wellness (SOPH-0080)"], "C683": ["Human Biology Lab (SOPH-0067)", "Introduction to Chemistry Lab (SOPH-0070)", "Microbiology Lab (SOPH-0075)", "Anatomy and Physiology I Lab (SOPH-0072)", "Anatomy and Physiology II Lab (SOPH-0082)"], "C955": ["Introduction to Statistics (SOPH-0005)"], "C963": ["U.S. Government (SOPH-0071)"], "C957": ["College Algebra (SOPH-0001)", "Calculus I (SOPH-0060)", "Precalculus (SOPH-0069)"], "D270": ["English Composition I (SOPH-0015)", "English Composition II (SOPH-0030)", "Workplace Writing I (SOPH-0050)", "Workplace Writing II (SOPH-0049)"], "D268": ["Public Speaking (SOPH-0024)", "Workplace Communication (SOPH-0034)", "Business Communication (SOPH-0059)"], "D265": ["Critical Thinking (SOPH-0065)"], "D324": ["Project Management (SOPH-0013)"], "D426": ["Introduction to Relational Databases (SOPH-0047)"], "D315": ["Introduction to Networking (SOPH-0068)"], "E004": ["Introduction to Information Technology (SOPH-0023)"]}, "study": {"C458": ["Health 101", "Nutrition 101"], "C683": ["Biology 101L", "Chemistry 111L", "Chemistry 112L", "Biology 107L", "Biology 201L", "Biology 202L", "Physics 111L", "Science 101L", "Physics 112L"], "C955": ["Statistics 101", "Business 212"], "C963": ["Political Science 102"], "C957": ["Math 101", "Math 103", "Math 104", "Math 105", "Math 301"], "D270": ["English 104", "English 105"], "D268": ["Communications 101", "Business 113", "Business 324"], "D265": ["Humanities 201"], "D315": ["Computer Science 108", "Computer Science 304"], "D324": ["Business 311", "Business 112"], "D426": ["Analytics 103", "Computer Science 107"], "D827": ["Computer Science 202", "Computer Science 110"], "E004": ["Computer Science 102", "Business 109"], "D829": ["Computer Science 336"], "D333": ["Philosophy 104"]}, "certs": [{"group": "CompTIA", "name": "CompTIA A+", "clears": ["D316", "D317"]}, {"group": "CompTIA", "name": "CompTIA Tech+", "clears": ["E004"]}, {"group": "CompTIA", "name": "CompTIA Network+", "clears": ["D325", "D315"]}, {"group": "CompTIA", "name": "CompTIA Security+", "clears": ["D329", "D315", "D827"]}, {"group": "CompTIA", "name": "CompTIA CySA+", "clears": ["D340", "D329", "D315"]}, {"group": "CompTIA", "name": "CompTIA PenTest+", "clears": ["D332", "D329", "D315"]}, {"group": "CompTIA", "name": "CompTIA SecurityX (CASP+)", "clears": ["D329", "D315", "D827"]}, {"group": "CompTIA", "name": "CompTIA Linux+", "clears": ["D281"]}, {"group": "CompTIA", "name": "CompTIA Project+", "clears": ["D324"]}, {"group": "CompTIA", "name": "CompTIA Data+", "clears": ["D492"]}, {"group": "Other vendors", "name": "Google IT Support Professional", "clears": ["E004"]}, {"group": "Other vendors", "name": "LPI Linux Essentials / LPIC", "clears": ["D281"]}, {"group": "Other vendors", "name": "Red Hat RHCSA / RHCE / RHCA", "clears": ["D281"]}, {"group": "Other vendors", "name": "ITIL 4 Foundation (active)", "clears": ["D336"]}, {"group": "Other vendors", "name": "PMI PMP or CAPM", "clears": ["D324"]}, {"group": "Other vendors", "name": "Cisco CCNA", "clears": ["D325", "D329", "D315"]}, {"group": "Other vendors", "name": "Microsoft SC-900, SC-200, or SC-300", "clears": ["D827"]}, {"group": "Other vendors", "name": "Database: CIW DB Design, Azure DP-300, or Oracle DB Foundations", "clears": ["D426"]}, {"group": "Other vendors", "name": "CSA CCSK", "clears": ["D320"]}, {"group": "Other vendors", "name": "OffSec OSCP+ / OSCE3", "clears": ["D332"]}, {"group": "ISC2", "name": "ISC2 CC", "clears": ["D827"]}, {"group": "ISC2", "name": "ISC2 SSCP", "clears": ["C845"]}, {"group": "ISC2", "name": "ISC2 CISSP (or Associate of ISC2)", "clears": ["D827", "D828", "C845", "D832"]}, {"group": "ISC2", "name": "ISC2 CCSP", "clears": ["D320"]}, {"group": "ISACA", "name": "ISACA CISM", "clears": ["D827", "D828", "C845", "D832"]}, {"group": "ISACA", "name": "ISACA CISA", "clears": ["D827", "C845", "D832"]}, {"group": "ISACA", "name": "ISACA CRISC", "clears": ["D827", "C845"]}, {"group": "ISACA", "name": "ISACA CGEIT", "clears": ["C845", "D832"]}, {"group": "EC-Council", "name": "EC-Council CEH", "clears": ["D332", "D329", "D315", "D827"]}, {"group": "EC-Council", "name": "EC-Council ECIH", "clears": ["D340"]}, {"group": "EC-Council", "name": "EC-Council CHFI", "clears": ["D829"]}, {"group": "EC-Council", "name": "EC-Council CCISO", "clears": ["D827", "D832"]}, {"group": "GIAC", "name": "GIAC GSEC", "clears": ["D827", "D329", "D315"]}, {"group": "GIAC", "name": "GIAC GCED", "clears": ["D827", "D329", "D315"]}, {"group": "GIAC", "name": "GIAC GCIA", "clears": ["D329", "D315"]}, {"group": "GIAC", "name": "GIAC GCIH", "clears": ["D340"]}, {"group": "GIAC", "name": "GIAC GPEN", "clears": ["D332"]}, {"group": "GIAC", "name": "GIAC GCFA or GCFE", "clears": ["D829"]}, {"group": "GIAC", "name": "GIAC GISF", "clears": ["D827"]}, {"group": "GIAC", "name": "GIAC GLEG", "clears": ["D828"]}, {"group": "GIAC", "name": "GIAC GSTRT", "clears": ["C845"]}], "prereqs": ["IT Fundamentals (in order)", "Networks", "Network & Security Applications", "Core Cybersecurity Principles", "Programming (in order)", "Cyber Defense and Cloud Security", "Penetration Testing", "Capstone (last)"], "notes": ["Official transcripts must reach WGU by the <strong>5th of the month before your start date</strong>. WGU does not accept transfer credit after you start.", "Certifications and courses must have been completed within the <strong>last 5 years</strong>.", "WGU applies at most <strong>75%</strong> of the program's CUs from transfer. At least 25% must be completed at WGU.", "Must be taken at WGU: <strong>Python for IT Automation</strong> and the <strong>Capstone</strong>. Everything else has an official transfer path.", "The program has a strict prerequisite chain (groups 1–7, then the capstone). The group for each course is under <em>What transfers</em>."], "asks": ["Map my plan against the prerequisite groups so I'm never waiting on a locked course. Groups 4 and 5 can run side by side.", "Confirm which of my optional ISC2 vouchers (SSCP, CCSP) I qualify for and when I can claim them."]}, {"key": "BSIT", "name": "B.S. Information Technology", "short": "BSIT", "totalCU": 110, "termCost": 4125, "cap": 0.75, "minCU": 12, "hasPartners": true, "grad": false, "sophiaMax": 46, "studyMax": 50, "sophiaUrl": "https://partners.wgu.edu/transfer-pathway-agreement?uniqueId=BSIT7110&collegeCode=IT&instId=796&programId=250", "studyUrl": "https://partners.wgu.edu/transfer-pathway-agreement?uniqueId=BSIT4424&collegeCode=IT&instId=678&programId=250", "courses": [{"code": "E004", "title": "Introduction to IT", "cu": 3, "term": 1, "cert": null, "group": null, "area": "Core", "rule": "One 3-unit intro to IT course, or Google IT Support / CompTIA Tech+. IT associate/bachelor's degree can satisfy (within 5 years)."}, {"code": "E005", "title": "Business Productivity Software", "cu": 3, "term": 1, "cert": null, "group": null, "area": "Non-Transferable", "rule": "Must be completed at WGU (WGU notes it can be completed before you enroll in a degree program)."}, {"code": "D246", "title": "Influential Communication through Visual Design and Storytelling", "cu": 3, "term": 1, "cert": null, "group": null, "area": "Gen Ed", "rule": "One 3-unit course in influential communication through visual design and storytelling."}, {"code": "C458", "title": "Health, Fitness, and Wellness", "cu": 4, "term": 1, "cert": null, "group": null, "area": "Gen Ed", "rule": "One 3–4 unit course in health, wellness, or nutrition (not physical activity or EMT)."}, {"code": "D773", "title": "Technology and Ethics: Emerging Trends and Society", "cu": 3, "term": 2, "cert": null, "group": null, "area": "Gen Ed", "rule": "One 3-unit course in technology and ethics."}, {"code": "D265", "title": "Critical Thinking: Reason and Evidence", "cu": 3, "term": 2, "cert": null, "group": null, "area": "Gen Ed", "rule": "One 3-unit course in critical thinking, reasoning, argument, or logic."}, {"code": "D336", "title": "Business of IT – Applications", "cu": 4, "term": 2, "cert": "ITIL 4 Foundation", "group": null, "area": "Core", "rule": "One 4-unit business-of-IT course, or an active ITIL Foundation cert."}, {"code": "D270", "title": "Composition: Successful Self-Expression", "cu": 3, "term": 2, "cert": null, "group": null, "area": "Gen Ed", "rule": "One 3-unit written communication/composition course."}, {"code": "D459", "title": "Introduction to Systems Thinking and Applications", "cu": 3, "term": 3, "cert": null, "group": null, "area": "Gen Ed", "rule": "One 3-unit systems thinking course."}, {"code": "D324", "title": "Business of IT – Project Management", "cu": 4, "term": 3, "cert": "CompTIA Project+", "group": null, "area": "Additional", "rule": "One 4-unit project management course, or Project+, PMP, or CAPM."}, {"code": "C955", "title": "Applied Probability and Statistics", "cu": 3, "term": 3, "cert": null, "group": null, "area": "Gen Ed", "rule": "One 3-unit statistics course."}, {"code": "D685", "title": "Practical Applications of Prompt", "cu": 2, "term": 3, "cert": null, "group": null, "area": "Additional", "rule": "One 2-unit course in prompt engineering."}, {"code": "D281", "title": "Linux Foundations", "cu": 3, "term": 4, "cert": "LPI Linux Essentials", "group": null, "area": "Additional", "rule": "One 3-unit Linux course, or Linux+, LPI Linux Essentials/LPIC, LFCS, RHCSA/RHCE/RHCA, Oracle Linux 8 (1Z0-106)."}, {"code": "D316", "title": "IT Foundations", "cu": 4, "term": 4, "cert": "CompTIA A+ (Core 1)", "group": null, "area": "Additional", "rule": "CompTIA A+ certification."}, {"code": "C963", "title": "American Politics and the US Constitution", "cu": 3, "term": 4, "cert": null, "group": null, "area": "Gen Ed", "rule": "One 3-unit U.S. government course."}, {"code": "E006", "title": "Digital Transformation in the Enterprise", "cu": 2, "term": 4, "cert": null, "group": null, "area": "Non-Transferable", "rule": "Must be completed at WGU."}, {"code": "D388", "title": "Fundamentals of Spreadsheets and Data Presentations", "cu": 3, "term": 5, "cert": null, "group": null, "area": "Core", "rule": "One 3-unit spreadsheets course. IT associate/bachelor's degree can satisfy (within 5 years)."}, {"code": "E007", "title": "Agile Methodology", "cu": 3, "term": 5, "cert": null, "group": null, "area": "Additional", "rule": "One 3-unit agile methodology course, or PMI-ACP."}, {"code": "D317", "title": "IT Applications", "cu": 4, "term": 5, "cert": "CompTIA A+ (Core 2)", "group": null, "area": "Additional", "rule": "CompTIA A+ certification."}, {"code": "E008", "title": "Technology Management", "cu": 3, "term": 5, "cert": null, "group": null, "area": "Additional", "rule": "One upper-division 3-unit technology management course."}, {"code": "E009", "title": "Web Design Fundamentals", "cu": 3, "term": 6, "cert": null, "group": null, "area": "Core", "rule": "One 3-unit web programming course, or CIW Site Development Associate / CIW Advanced HTML5 & CSS3 Specialist."}, {"code": "D315", "title": "Network and Security – Foundations", "cu": 3, "term": 6, "cert": null, "group": null, "area": "Core", "rule": "One 3-unit networking course with a security component, or Network+/Security+/PenTest+/CySA+/SecurityX/CEH/CCNA/GSEC and others."}, {"code": "C957", "title": "Applied Algebra", "cu": 3, "term": 6, "cert": null, "group": null, "area": "Gen Ed", "rule": "One 3-unit college algebra or higher course (not intermediate algebra or quantitative reasoning)."}, {"code": "D318", "title": "Cloud Applications", "cu": 3, "term": 6, "cert": "CompTIA Cloud+", "group": null, "area": "Additional", "rule": "CompTIA Cloud+ or a Google Cloud Professional certification."}, {"code": "D426", "title": "Data Management – Foundations", "cu": 3, "term": 7, "cert": null, "group": null, "area": "Core", "rule": "One 3-unit database course, or CIW Database Design, DP-300, or Oracle Database Foundations (1Z0-006)."}, {"code": "D325", "title": "Networks", "cu": 4, "term": 7, "cert": "CompTIA Network+", "group": null, "area": "Additional", "rule": "Network+, or Cisco CCNA/CCNP/CCIE (Enterprise, Data Center, Service Provider)."}, {"code": "D339", "title": "Technical Communication", "cu": 3, "term": 7, "cert": null, "group": null, "area": "Gen Ed", "rule": "One 3-unit technical communication or writing course."}, {"code": "C683", "title": "Natural Science Lab", "cu": 2, "term": 7, "cert": null, "group": null, "area": "Gen Ed", "rule": "One 2-unit natural science lab (chemistry, geology, physics, astronomy, or biology)."}, {"code": "D198", "title": "Global Arts and Humanities", "cu": 3, "term": 8, "cert": null, "group": null, "area": "Gen Ed", "rule": "One 3-unit humanities course (literature, arts, music, theatre, philosophy, ethics, religious studies). Not satisfied by an AAS."}, {"code": "D329", "title": "Network and Security – Applications", "cu": 4, "term": 8, "cert": "CompTIA Security+", "group": null, "area": "Additional", "rule": "Security+, PenTest+, CySA+, SecurityX, CEH, Cisco CCNA / CCNP Security / CCIE Security, or GIAC GSE/GSEC/GCIA/GCED."}, {"code": "E010", "title": "Foundations of Programming (Python)", "cu": 3, "term": 8, "cert": null, "group": null, "area": "Additional", "rule": "One 3-unit intro to Python course from a college. Not accepted from Sophia/ACE-credit providers (WGU note, Jan 2026)."}, {"code": "D822", "title": "Technology Governance", "cu": 3, "term": 8, "cert": null, "group": null, "area": "Additional", "rule": "One 3-unit technology governance course."}, {"code": "D427", "title": "Data Management – Applications", "cu": 4, "term": 9, "cert": null, "group": null, "area": "Additional", "rule": "A second 4-unit database course, or CIW Database Design, DP-300, or Oracle Database Foundations."}, {"code": "D522", "title": "Python for IT Automation", "cu": 3, "term": 9, "cert": null, "group": null, "area": "Non-Transferable", "rule": "Must be completed at WGU."}, {"code": "D282", "title": "Cloud Foundations", "cu": 3, "term": 9, "cert": "AWS Certified Cloud Practitioner", "group": null, "area": "Additional", "rule": "One 3-unit cloud foundations course, or AWS Certified Cloud Practitioner."}], "sophia": {"C458": ["Introduction to Nutrition (SOPH-0063)", "Health, Fitness, and Wellness (SOPH-0080)"], "C683": ["Human Biology Lab (SOPH-0067)", "Introduction to Chemistry Lab (SOPH-0070)", "Microbiology Lab (SOPH-0075)", "Anatomy and Physiology I Lab (SOPH-0072)", "Anatomy and Physiology II Lab (SOPH-0082)"], "C955": ["Introduction to Statistics (SOPH-0005)"], "C963": ["U.S. Government (SOPH-0071)"], "C957": ["College Algebra (SOPH-0001)", "Calculus I (SOPH-0060)", "Precalculus (SOPH-0069)"], "D270": ["English Composition I (SOPH-0015)", "English Composition II (SOPH-0030)", "Workplace Writing I (SOPH-0050)", "Workplace Writing II (SOPH-0049)"], "D265": ["Critical Thinking (SOPH-0065)"], "D198": ["Art History I (SOPH-0006)", "Visual Communications (SOPH-0009)", "Art History II (SOPH-0029)", "Ancient Greek Philosophers (SOPH-0027)", "Introduction to Ethics (SOPH-0020)", "Approaches to Studying Religions (SOPH-0008)", "Business Ethics (SOPH-0076)"], "D324": ["Project Management (SOPH-0013)"], "D426": ["Introduction to Relational Databases (SOPH-0047)"], "D315": ["Introduction to Networking (SOPH-0068)"], "D246": ["Visual Communications (SOPH-0009)"], "E004": ["Introduction to Information Technology (SOPH-0023)"], "E009": ["Introduction to Web Development (SOPH-0043)"], "D339": ["Business Communication (SOPH-0059)"]}, "study": {"C458": ["Health 101", "Nutrition 101"], "C683": ["Biology 101L", "Chemistry 111L", "Chemistry 112L", "Biology 107L", "Biology 201L", "Biology 202L", "Physics 111L", "Science 101L", "Physics 112L"], "C955": ["Statistics 101", "Business 212"], "C963": ["Political Science 102"], "C957": ["Math 101", "Math 103", "Math 104", "Math 105", "Math 301"], "D270": ["English 104", "English 105"], "D265": ["Humanities 201"], "D198": ["Art 103", "Art 104", "English 101", "English 102", "English 103", "English 301", "English 310", "Humanities 101", "Philosophy 301", "Philosophy 102", "Philosophy 103", "Social Science 108", "Business 108", "Business 310", "Business 318"], "D339": ["English 305"], "D315": ["Computer Science 108", "Computer Science 304"], "D324": ["Business 311", "Business 112"], "D426": ["Analytics 103", "Computer Science 107"], "D427": ["Computer Science 204", "Computer Science 303"], "E004": ["Computer Science 102", "Business 109"], "E009": ["Computer Science 104"], "D773": ["Philosophy 104"]}, "certs": [{"group": "CompTIA", "name": "CompTIA A+", "clears": ["D316", "D317"]}, {"group": "CompTIA", "name": "CompTIA Tech+", "clears": ["E004"]}, {"group": "CompTIA", "name": "CompTIA Network+", "clears": ["D325", "D315"]}, {"group": "CompTIA", "name": "CompTIA Security+", "clears": ["D329", "D315"]}, {"group": "CompTIA", "name": "CompTIA CySA+", "clears": ["D329", "D315"]}, {"group": "CompTIA", "name": "CompTIA PenTest+", "clears": ["D329", "D315"]}, {"group": "CompTIA", "name": "CompTIA SecurityX (CASP+)", "clears": ["D329", "D315"]}, {"group": "CompTIA", "name": "CompTIA Cloud+", "clears": ["D318"]}, {"group": "CompTIA", "name": "CompTIA Linux+", "clears": ["D281"]}, {"group": "CompTIA", "name": "CompTIA Project+", "clears": ["D324"]}, {"group": "Other vendors", "name": "Google IT Support Professional", "clears": ["E004"]}, {"group": "Other vendors", "name": "AWS Certified Cloud Practitioner", "clears": ["D282"]}, {"group": "Other vendors", "name": "Google Cloud Professional (any listed track)", "clears": ["D318"]}, {"group": "Other vendors", "name": "LPI Linux Essentials / LPIC", "clears": ["D281"]}, {"group": "Other vendors", "name": "Red Hat RHCSA / RHCE / RHCA", "clears": ["D281"]}, {"group": "Other vendors", "name": "ITIL 4 Foundation (active)", "clears": ["D336"]}, {"group": "Other vendors", "name": "PMI PMP or CAPM", "clears": ["D324"]}, {"group": "Other vendors", "name": "PMI-ACP (Agile Certified Practitioner)", "clears": ["E007"]}, {"group": "Other vendors", "name": "Cisco CCNA", "clears": ["D325", "D329", "D315"]}, {"group": "Other vendors", "name": "EC-Council CEH", "clears": ["D329", "D315"]}, {"group": "Other vendors", "name": "GIAC GSEC, GCED, GCIA, or GSE", "clears": ["D329", "D315"]}, {"group": "Other vendors", "name": "CIW Site Development Associate or Advanced HTML5 & CSS3", "clears": ["E009"]}, {"group": "Other vendors", "name": "Database: CIW DB Design, Azure DP-300, or Oracle DB Foundations", "clears": ["D426", "D427"]}], "prereqs": [], "notes": ["Official transcripts must reach WGU by the <strong>5th of the month before your start date</strong>. WGU does not accept transfer credit after you start.", "Certifications and courses must have been completed within the <strong>last 5 years</strong>.", "WGU applies at most <strong>75%</strong> of the program's CUs from transfer. At least 25% must be completed at WGU.", "Must be taken at WGU: <strong>Python for IT Automation</strong>, <strong>Business Productivity Software</strong> (WGU notes this one can be finished at WGU before you enroll), and <strong>Digital Transformation in the Enterprise</strong>.", "WGU's transfer tool lists BSIT as Catalog 08-2026; the course list here follows the published program guide (Catalog 202604, same 35 courses / 110 CUs)."], "asks": ["Confirm the order you recommend for the cert-bearing courses (A+, Network+, Security+, Cloud+, AWS CCP) so I can book exams early."]}, {"key": "MSCSIA", "name": "M.S. Cybersecurity and Information Assurance", "short": "MSCSIA", "totalCU": 36, "termCost": 5125, "cap": 0.5, "minCU": 8, "hasPartners": false, "grad": true, "sophiaMax": 0, "studyMax": 0, "sophiaUrl": "", "studyUrl": "", "sophia": {}, "study": {}, "prereqs": [], "courses": [{"code": "E123", "title": "Cybersecurity Fundamentals", "cu": 2, "term": 1, "cert": null, "group": null, "area": "Additional", "rule": "No published transfer path. Take at WGU."}, {"code": "D482", "title": "Secure Network Design", "cu": 3, "term": 1, "cert": null, "group": null, "area": "Additional", "rule": "No published transfer path. Take at WGU."}, {"code": "D487", "title": "Secure Software Design", "cu": 3, "term": 1, "cert": null, "group": null, "area": "Additional", "rule": "No published transfer path. Take at WGU."}, {"code": "D483", "title": "Security Operations", "cu": 4, "term": 2, "cert": "CompTIA CySA+", "group": null, "area": "Additional", "rule": "Cleared by an existing CompTIA CySA+ (community-confirmed; verify on WGU's transfer mapping)."}, {"code": "D485", "title": "Cloud Security", "cu": 4, "term": 2, "cert": null, "group": null, "area": "Additional", "rule": "No published transfer path. Take at WGU."}, {"code": "D484", "title": "Penetration Testing", "cu": 4, "term": 2, "cert": "CompTIA PenTest+", "group": null, "area": "Additional", "rule": "Cleared by an existing CompTIA PenTest+ (community-confirmed; verify on WGU's transfer mapping)."}, {"code": "D488", "title": "Cybersecurity Architecture and Engineering", "cu": 4, "term": 3, "cert": "CompTIA SecurityX (optional voucher)", "group": null, "area": "Additional", "rule": "Some students report SecurityX/CASP+ clearing it. Confirm with an Enrollment Counselor."}, {"code": "E122", "title": "Human-Centric Risk in Cybersecurity", "cu": 2, "term": 3, "cert": null, "group": null, "area": "Additional", "rule": "No published transfer path. Take at WGU."}, {"code": "D489", "title": "Cybersecurity Management", "cu": 4, "term": 3, "cert": "ISACA CISM (optional voucher)", "group": null, "area": "Additional", "rule": "Cleared by an existing ISACA CISM. CISSP does NOT clear it."}, {"code": "E121", "title": "Governance, Risk, and Compliance in the Age of AI", "cu": 2, "term": 4, "cert": "ISACA AAISM (optional voucher)", "group": null, "area": "Additional", "rule": "No published transfer path. AAISM does not transfer."}, {"code": "D490", "title": "Cybersecurity Graduate Capstone", "cu": 4, "term": 4, "cert": null, "group": null, "area": "Non-Transferable", "rule": "Must be completed at WGU."}], "certs": [{"group": "Certifications", "name": "CompTIA CySA+", "clears": ["D483"]}, {"group": "Certifications", "name": "CompTIA PenTest+", "clears": ["D484"]}, {"group": "Certifications", "name": "ISACA CISM", "clears": ["D489"]}], "notes": ["Graduate programs aren't in WGU's Transfer Pathways tool and Sophia/Study.com don't apply. The lever is certifications.", "Graduate transfer is capped at about <strong>50%</strong> of program CUs. Confirm the current cap with an Enrollment Counselor.", "Certifications must have been earned within the last 5 years."], "asks": ["Confirm which optional vouchers (SecurityX, CISM, AAISM) I qualify for and how long each stays valid."]}]};
+const $ = id => document.getElementById(id);
+const fmt$ = n => '$' + n.toLocaleString();
+const store = {
+  get(k){ try { return JSON.parse(localStorage.getItem(k)); } catch(e){ return null; } },
+  set(k,v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} },
+  del(k){ try { localStorage.removeItem(k); } catch(e){} }
+};
 
-    // --- DOM ELEMENTS ---
-    const selectProgram = document.getElementById('program-select');
-    const certGrid = document.getElementById('cert-grid');
-    const genEdGrid = document.getElementById('gen-ed-grid');
-    const genEdSection = document.getElementById('gen-ed-section');
-    const transferProgress = document.getElementById('transfer-progress');
-    const transferPercentage = document.getElementById('transfer-percentage');
-    const transferCapDisplay = document.getElementById('transfer-cap-display');
-    const transferWarnings = document.getElementById('transfer-warnings');
-    const termSlider = document.getElementById('term-slider');
-    const termDisplay = document.getElementById('term-display');
-    
-    // Stats
-    const statRemainingCu = document.getElementById('stat-remaining-cu');
-    const statCuPerTerm = document.getElementById('stat-cu-per-term');
-    const statCost = document.getElementById('stat-cost');
-    const paceFeedback = document.getElementById('pace-feedback');
-    const mentorTemplate = document.getElementById('mentor-template');
+let P = null;          // current program data
+let S = null;          // selections
+let byCode = {};
 
-    // --- STATE ---
-    let currentProgram = 'BSIT';
-    let transferredCUs = 0;
+function blank(){ return { certs: [], sophia: [], study: [], prior: [], terms: 2 }; }
 
-    // --- INIT ---
-    function init() {
-        populateCheckboxes();
-        calculateEverything();
-    }
+function init(){
+  const sel = $('program');
+  DATA.programs.forEach(p => {
+    const o = document.createElement('option');
+    o.value = p.key; o.textContent = `${p.name} (${p.short}), ${p.totalCU} CUs`;
+    sel.appendChild(o);
+  });
+  const last = store.get('wgu-planner-program');
+  if (last && DATA.programs.some(p => p.key === last)) sel.value = last;
+  sel.addEventListener('change', load);
+  $('terms').addEventListener('input', () => { S.terms = +$('terms').value; save(); render(); });
+  $('copy').addEventListener('click', copyRoadmap);
+  $('reset').addEventListener('click', () => { store.del('wgu-planner-' + P.key); load(); });
+  load();
+}
 
-    // --- CORE LOGIC ---
-    function populateCheckboxes() {
-        currentProgram = selectProgram.value;
-        const data = programData[currentProgram];
-        
-        certGrid.innerHTML = '';
-        genEdGrid.innerHTML = '';
-        transferredCUs = 0;
+function load(){
+  P = DATA.programs.find(p => p.key === $('program').value);
+  store.set('wgu-planner-program', P.key);
+  byCode = {}; P.courses.forEach(c => byCode[c.code] = c);
+  S = Object.assign(blank(), store.get('wgu-planner-' + P.key) || {});
+  $('terms').value = S.terms;
+  // notes
+  $('program-notes').innerHTML = '<strong>Before you plan:</strong><ul>' + P.notes.map(n => `<li>${n}</li>`).join('') + '</ul>';
+  // sections availability
+  $('card-prior').style.display = P.hasPartners ? '' : 'none';
+  $('card-cram').style.display = P.hasPartners ? '' : 'none';
+  $('prior-th').style.display = P.hasPartners ? '' : 'none';
+  buildCerts(); buildCram(); render();
+}
 
-        // Render Certs
-        data.certs.forEach(item => {
-            certGrid.innerHTML += createCheckboxHTML(item);
-        });
+function save(){ store.set('wgu-planner-' + P.key, S); }
 
-        // Render Gen Eds (Hide section if MSCSIA)
-        if (data.genEds.length > 0) {
-            genEdSection.style.display = 'block';
-            data.genEds.forEach(item => {
-                genEdGrid.innerHTML += createCheckboxHTML(item);
-            });
-        } else {
-            genEdSection.style.display = 'none';
-        }
+function toggle(list, val, on){
+  const i = S[list].indexOf(val);
+  if (on && i < 0) S[list].push(val);
+  if (!on && i >= 0) S[list].splice(i, 1);
+  save(); render();
+}
 
-        // Setup event listeners for new checkboxes
-        document.querySelectorAll('.transfer-cb').forEach(cb => {
-            cb.addEventListener('change', calculateEverything);
-        });
+function buildCerts(){
+  const wrap = $('cert-groups'); wrap.innerHTML = '';
+  const groups = {};
+  P.certs.forEach(c => (groups[c.group] = groups[c.group] || []).push(c));
+  Object.entries(groups).forEach(([g, list]) => {
+    const h = document.createElement('h3'); h.textContent = g; wrap.appendChild(h);
+    const grid = document.createElement('div'); grid.className = 'grid';
+    list.forEach(c => {
+      const titles = c.clears.map(k => byCode[k] ? byCode[k].title : k);
+      const lab = document.createElement('label'); lab.className = 'chk';
+      lab.innerHTML = `<input type="checkbox"><span><span class="t">${c.name}</span><span class="d">Clears: ${titles.join(' · ')}</span></span>`;
+      const cb = lab.querySelector('input');
+      cb.checked = S.certs.includes(c.name);
+      cb.addEventListener('change', () => toggle('certs', c.name, cb.checked));
+      lab.dataset.cert = c.name;
+      grid.appendChild(lab);
+    });
+    wrap.appendChild(grid);
+  });
+}
 
-        transferCapDisplay.innerText = (data.transferCap * 100);
-    }
+function buildCram(){
+  if (!P.hasPartners) return;
+  [['sophia', P.sophia, P.sophiaMax, P.sophiaUrl], ['study', P.study, P.studyMax, P.studyUrl]].forEach(([key, map, max, url]) => {
+    const list = $(key + '-list'); list.innerHTML = '';
+    $(key + '-link').href = url;
+    P.courses.filter(c => map[c.code]).forEach(c => {
+      const lab = document.createElement('label'); lab.className = 'chk';
+      lab.innerHTML = `<input type="checkbox"><span><span class="t">${c.title}</span><span class="d">${map[c.code].join(' · ')}</span><span class="vcert"></span></span><span class="cu">${c.cu} CU</span>`;
+      const cb = lab.querySelector('input');
+      cb.checked = S[key].includes(c.code);
+      cb.addEventListener('change', () => {
+        if (cb.checked) { const other = key === 'sophia' ? 'study' : 'sophia'; const i = S[other].indexOf(c.code); if (i >= 0) S[other].splice(i, 1); }
+        toggle(key, c.code, cb.checked);
+      });
+      lab.dataset.code = c.code;
+      list.appendChild(lab);
+    });
+  });
+}
 
-    function createCheckboxHTML(item) {
-        return `
-            <label class="checkbox-item">
-                <input type="checkbox" class="transfer-cb" data-cu="${item.cu}" data-name="${item.name}">
-                <div class="checkbox-label">
-                    ${item.name}
-                </div>
-                <span class="cu-badge">${item.cu} CU</span>
-            </label>
-        `;
-    }
+function clearedBy(c){
+  if (c.area === 'Non-Transferable') return { src: 'wgu' };
+  const certs = P.certs.filter(x => S.certs.includes(x.name) && x.clears.includes(c.code)).map(x => x.name);
+  if (certs.length) return { src: 'cert', detail: certs.join(', ') };
+  if (S.prior.includes(c.code)) return { src: 'prior' };
+  if (S.sophia.includes(c.code)) return { src: 'sophia' };
+  if (S.study.includes(c.code)) return { src: 'study' };
+  return { src: 'left' };
+}
 
-    function calculateEverything() {
-        const data = programData[currentProgram];
-        
-        // 1. Calculate Transfers
-        transferredCUs = 0;
-        let transferredNames = [];
-        document.querySelectorAll('.transfer-cb:checked').forEach(cb => {
-            transferredCUs += parseInt(cb.getAttribute('data-cu'));
-            transferredNames.push(cb.getAttribute('data-name'));
-        });
+const BADGE = {
+  cert: d => `<span class="badge b-cert">Cert</span> <span class="small muted">${d}</span>`,
+  prior: () => '<span class="badge b-prior">Prior college</span>',
+  sophia: () => '<span class="badge b-sophia">Sophia</span>',
+  study: () => '<span class="badge b-study">Study.com</span>',
+  left: () => '<span class="badge b-left">Take at WGU</span>',
+  wgu: () => '<span class="badge b-wgu">WGU only</span>'
+};
 
-        const maxTransferCU = Math.floor(data.totalCU * data.transferCap);
-        let validTransferCUs = transferredCUs;
-        
-        transferWarnings.innerText = '';
-        if (transferredCUs > maxTransferCU) {
-            validTransferCUs = maxTransferCU;
-            transferWarnings.innerText = `⚠️ You have exceeded the maximum allowable transfer limit (${maxTransferCU} CUs). Some credits will not apply.`;
-        }
+function render(){
+  const rows = P.courses.map(c => ({ c, r: clearedBy(c) }));
+  const transferred = rows.filter(x => ['cert','prior','sophia','study'].includes(x.r.src));
+  const transCU = transferred.reduce((a, x) => a + x.c.cu, 0);
+  const maxCU = Math.floor(P.totalCU * P.cap);
+  const validCU = Math.min(transCU, maxCU);
+  const leftCU = P.totalCU - validCU;
+  const leftCourses = rows.filter(x => x.r.src === 'left' || x.r.src === 'wgu').length;
+  const pct = transCU / maxCU * 100;
 
-        const percentage = ((validTransferCUs / data.totalCU) * 100).toFixed(1);
-        transferPercentage.innerText = percentage;
-        transferProgress.style.width = `${percentage}%`;
-        
-        // Color coding progress bar
-        if (percentage >= (data.transferCap * 100)) {
-            transferProgress.className = 'progress-bar danger';
-        } else if (percentage > 50) {
-            transferProgress.className = 'progress-bar warning';
-        } else {
-            transferProgress.className = 'progress-bar';
-        }
+  $('s-trans').textContent = validCU;
+  $('s-left').textContent = leftCU;
+  $('s-courses').textContent = leftCourses;
+  $('s-cap').textContent = Math.round(Math.min(pct, 999)) + '%';
+  $('s-cap-l').textContent = `of the ${Math.round(P.cap*100)}% transfer cap (${maxCU} CU)`;
+  const m = $('cap-meter'); m.style.width = Math.min(pct, 100) + '%';
+  m.className = pct > 100 ? 'bad' : pct > 85 ? 'warn' : '';
 
-        // 2. Timeline & Costs
-        const remainingCUs = data.totalCU - validTransferCUs;
-        statRemainingCu.innerText = remainingCUs;
+  // warnings
+  const W = [];
+  if (transCU > maxCU) W.push(['', `You've marked ${transCU} CU, but WGU applies at most ${maxCU} CU (${Math.round(P.cap*100)}%) to this program. The extra ${transCU - maxCU} CU won't count.`]);
+  rows.forEach(({c, r}) => {
+    if (c.cert && ['prior','sophia','study'].includes(r.src)) W.push(['info', `${c.title} carries a built-in ${c.cert} voucher. Clearing it by ${r.src === 'prior' ? 'transfer' : (r.src === 'sophia' ? 'Sophia' : 'Study.com')} means giving up that free exam.`]);
+    if (r.src === 'cert' && (S.sophia.includes(c.code) || S.study.includes(c.code))) W.push(['info', `${c.title} is already cleared by your certification, so you can skip the ${S.sophia.includes(c.code) ? 'Sophia' : 'Study.com'} course for it.`]);
+    if (r.src === 'prior' && (S.sophia.includes(c.code) || S.study.includes(c.code))) W.push(['info', `${c.title} is already marked as cleared by prior college, so you can skip the platform course.`]);
+  });
+  $('warnings').innerHTML = W.map(([cls, t]) => `<li class="${cls}">${t}</li>`).join('');
 
-        const terms = parseInt(termSlider.value);
-        termDisplay.innerText = `${terms} Term${terms > 1 ? 's' : ''} (${terms * 6} Months)`;
+  // platform meters
+  if (P.hasPartners) {
+    [['sophia', P.sophiaMax], ['study', P.studyMax]].forEach(([k, max]) => {
+      const used = S[k].reduce((a, code) => a + (byCode[code] ? byCode[code].cu : 0), 0);
+      $(k + '-meta').textContent = `${S[k].length} course(s) · ${used} of ${max} CU WGU will accept from this platform`;
+      $(k + '-meter').style.width = Math.min(used / max * 100, 100) + '%';
+      document.querySelectorAll(`#${k}-list .chk`).forEach(l => {
+        const c = byCode[l.dataset.code]; const r = clearedBy(c);
+        l.classList.toggle('on', l.querySelector('input').checked);
+        l.classList.toggle('dim', r.src !== 'left' && r.src !== k);
+        l.querySelector('.vcert').textContent = c.cert ? `Built-in ${c.cert} voucher. You'd give it up.` : '';
+      });
+    });
+  }
+  document.querySelectorAll('#cert-groups .chk').forEach(l => l.classList.toggle('on', l.querySelector('input').checked));
 
-        const cuPerTerm = Math.ceil(remainingCUs / terms);
-        statCuPerTerm.innerText = cuPerTerm;
-        
-        // Format cost with commas
-        statCost.innerText = "$" + (terms * data.termCost).toLocaleString();
+  // plan table
+  const body = $('plan-body'); body.innerHTML = '';
+  rows.forEach(({c, r}) => {
+    const tr = document.createElement('tr');
+    const pg = c.group ? ` · Prereq group ${c.group}: ${P.prereqs[c.group-1] || ''}` : '';
+    const cert = c.cert ? `<span class="vcert">Built-in: ${c.cert}</span>` : '';
+    const canPrior = P.hasPartners && c.area !== 'Non-Transferable';
+    tr.innerHTML = `
+      <td><strong>${c.title}</strong>${cert}
+        <details><summary>What transfers</summary><p>${c.rule}<br><span>Term ${c.term} in the standard path${pg}</span></p></details></td>
+      <td class="code hide-sm">${c.code}</td>
+      <td>${c.cu}</td>
+      <td>${BADGE[r.src](r.detail)}</td>
+      <td class="prior-cell" style="${P.hasPartners ? '' : 'display:none'}">${canPrior ? `<input type="checkbox" aria-label="Cleared by prior college: ${c.title}" ${S.prior.includes(c.code) ? 'checked' : ''}>` : ''}</td>`;
+    const cb = tr.querySelector('.prior-cell input');
+    if (cb) cb.addEventListener('change', () => toggle('prior', c.code, cb.checked));
+    body.appendChild(tr);
+  });
 
-        // 3. Pacing Feedback
-        if (currentProgram !== 'MSCSIA') {
-            if (cuPerTerm < 12) paceFeedback.innerHTML = `<span style="color:var(--wgu-light-blue)">Pace: Part-time (Requires WGU minimum waiver). Focus on passing 12 CUs.</span>`;
-            else if (cuPerTerm <= 15) paceFeedback.innerHTML = `<span style="color:green">Pace: Standard Full-Time. Highly realistic for working adults (~10-15 hrs/wk).</span>`;
-            else if (cuPerTerm <= 25) paceFeedback.innerHTML = `<span style="color:var(--wgu-gold)">Pace: Accelerated. Requires dedication and consistency (~20-25 hrs/wk).</span>`;
-            else paceFeedback.innerHTML = `<span style="color:#d9534f">Pace: Hyper-Accelerated. High burnout risk. Requires deep prior IT experience or full-time study (~30-40+ hrs/wk).</span>`;
-        } else {
-            // Master's logic (8 CU = full time)
-            if (cuPerTerm <= 8) paceFeedback.innerHTML = `<span style="color:green">Pace: Standard Full-Time Graduate. Realistic for working adults.</span>`;
-            else if (cuPerTerm <= 15) paceFeedback.innerHTML = `<span style="color:var(--wgu-gold)">Pace: Accelerated Graduate. Demands heavy commitment.</span>`;
-            else paceFeedback.innerHTML = `<span style="color:#d9534f">Pace: Hyper-Accelerated. Path requires pre-reading D487 and strong infosec fundamentals.</span>`;
-        }
+  // pace
+  const terms = S.terms;
+  $('terms-l').textContent = `${terms} term${terms > 1 ? 's' : ''} (${terms * 6} months)`;
+  const per = Math.ceil(leftCU / terms);
+  $('p-left').textContent = leftCU;
+  $('p-per').textContent = per;
+  $('p-cost').textContent = fmt$(terms * P.termCost);
+  const pace = $('pace');
+  if (P.grad) {
+    pace.innerHTML = per <= 8 ? '<span style="color:var(--ok)">Standard full-time graduate pace. Realistic for working adults.</span>'
+      : per <= 15 ? '<span style="color:var(--warn)">Accelerated graduate pace. Demands heavy, consistent commitment.</span>'
+      : '<span style="color:var(--bad)">Hyper-accelerated. Usually needs prior certs, strong infosec fundamentals, and pre-study before day one.</span>';
+  } else {
+    pace.innerHTML = per < P.minCU ? `<span style="color:var(--wgu-light-blue)">Below WGU's ${P.minCU} CU/term full-time minimum. You'll still enroll in at least ${P.minCU} CU per term.</span>`
+      : per <= 15 ? '<span style="color:var(--ok)">Standard full-time pace. Realistic for working adults (~10–15 hrs/week).</span>'
+      : per <= 25 ? '<span style="color:var(--warn)">Accelerated. Needs dedication and consistency (~20–25 hrs/week).</span>'
+      : '<span style="color:var(--bad)">Hyper-accelerated. High burnout risk; usually needs deep prior IT experience or full-time study (30–40+ hrs/week).</span>';
+  }
 
-        // 4. Update Mentor Template
-        updateMentorTemplate(data.name, remainingCUs, validTransferCUs, terms, cuPerTerm, transferredNames);
-    }
+  buildRoadmap(rows, validCU, leftCU, per);
+}
 
-    function updateMentorTemplate(progName, remainingCUs, validTransferCUs, terms, cuPerTerm, transferredNames) {
-        let certString = transferredNames.length > 0 ? transferredNames.join(', ') : 'None';
-        
-        const template = `WGU ${progName} — Student Roadmap
-Name: [Your Name]                          Student ID: [Your ID]
-Program start date: [Date]                 Target graduation: ${terms * 6} months
-Program Mentor: [Mentor Name]
+function buildRoadmap(rows, validCU, leftCU, per){
+  const line = '────────────────────────────────────────────────';
+  const by = src => rows.filter(x => x.r.src === src).map(x => `  • ${x.c.title} (${x.c.code}, ${x.c.cu} CU)`);
+  const remaining = rows.filter(x => x.r.src === 'left' || x.r.src === 'wgu')
+    .map(x => `  • ${x.c.title} (${x.c.code}, ${x.c.cu} CU)${x.r.src === 'wgu' ? '  [WGU only]' : ''}${x.c.group ? '  [prereq group ' + x.c.group + ']' : ''}`);
+  const section = (title, items) => items.length ? `${title}\n${items.join('\n')}\n` : '';
+  const asks = [
+    'Open my next course as soon as I pass the current one. I understand added courses cost nothing extra.',
+    'Hold me accountable: if I miss two weekly targets in a row, tell me directly.',
+    'Flag any course where my catalog version differs from what I read online.'
+  ].concat(P.asks || []);
+  const certs = S.certs.length ? S.certs.join(', ') : 'None';
+  const text =
+`WGU ${P.name} (${P.short}): Student Roadmap
+Name: ____________________        Student ID: __________
+Program start date: __________    Target graduation: ${S.terms * 6} months (${S.terms} term${S.terms > 1 ? 's' : ''})
+Program Mentor: ______________
 
-────────────────────────────────────────────────
+${line}
 1. MY SITUATION
-────────────────────────────────────────────────
-Hours/week I can realistically commit: [X] hrs
-Work schedule / constraints: [Insert schedule]
-Prior IT experience: [Insert background]
-Transfers: ${validTransferCUs} CUs cleared prior to start.
-Items transferred: ${certString}
-Courses remaining: ${remainingCUs} CUs
+${line}
+Hours/week I can realistically commit: ___ hrs
+Work schedule / constraints: ______________________
+Prior IT experience: ______________________
+Certifications I hold (earned within 5 years): ${certs}
 
-────────────────────────────────────────────────
-2. MY TARGET PACE
-────────────────────────────────────────────────
-Target pace: ${terms} Term(s)
-CUs I intend to complete this term: ${cuPerTerm} CUs
-(WGU minimum full-time is ${progName.includes('M.S.') ? '8' : '12'} CU/term)
+${line}
+2. WHAT I'M TRANSFERRING IN (${validCU} of ${P.totalCU} CU)
+${line}
+${section('Cleared by certification:', by('cert'))}${section('Cleared by prior college / partner agreement:', by('prior'))}${section('Planned on Sophia (transcript due by the 5th of the month before start):', by('sophia'))}${section('Planned on Study.com (transcript due by the 5th of the month before start):', by('study'))}${validCU === 0 ? '  (none yet)\n' : ''}
+${line}
+3. WHAT'S LEFT AT WGU (${leftCU} CU)
+${line}
+${remaining.join('\n')}
 
+${line}
+4. MY TARGET PACE
+${line}
+CUs I intend to complete this term: ${per} CU
+(WGU minimum full-time is ${P.grad ? 8 : 12} CU/term)
 Courses I want opened THIS TERM, in order:
-  1. [Course Name]  target complete: [Date]
-  2. [Course Name]  target complete: [Date]
-  3. [Course Name]  target complete: [Date]
+  1. ______________________  target complete: ______
+  2. ______________________  target complete: ______
+  3. ______________________  target complete: ______
 
-────────────────────────────────────────────────
-3. WHAT I'M ASKING YOU FOR
-────────────────────────────────────────────────
-[ ] Open my next course as soon as I pass the current one — I understand added courses cost nothing extra.
-[ ] Hold me accountable: if I miss two weekly targets in a row, tell me directly.
-[ ] Flag any course where my catalog version differs from what I read online.
+${line}
+5. WHAT I'M ASKING YOU FOR
+${line}
+${asks.map(a => '[ ] ' + a).join('\n')}
+
+${line}
+6. WEEKLY CHECK-IN (5 minutes)
+${line}
+  • Last week's target:            Hit? Y / N
+  • This week's target:
+  • Blocked on:
+  • Next course to open:
+  • Exam / task submission scheduled:
 `;
-        mentorTemplate.value = template;
-    }
+  $('roadmap').value = text;
+}
 
-    // --- EVENT LISTENERS ---
-    selectProgram.addEventListener('change', init);
-    termSlider.addEventListener('input', calculateEverything);
+function copyRoadmap(){
+  const t = $('roadmap');
+  const done = () => { $('copied').textContent = 'Copied.'; setTimeout(() => $('copied').textContent = '', 2000); };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(t.value).then(done, () => { t.select(); document.execCommand('copy'); done(); });
+  } else { t.select(); document.execCommand('copy'); done(); }
+}
 
-    // Run on load
-    init();
-
+init();
 </script>
 </body>
 </html>
